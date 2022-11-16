@@ -4,20 +4,21 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Device.Location;
 
 namespace RoutingServer
 {
     // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom d'interface "IService1" à la fois dans le code et le fichier de configuration.
     [ServiceContract]
-    public interface IService1
+    public interface IBikeService
     {
         [OperationContract]
-        string GetData(int value);
-
+        string GetItinerary(String origin, String destination);
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        string GetNearestStation(GeoCoordinate coord);
+        [OperationContract]
+        string createItinary(String origin, String station1, String station2, String destination);
 
-        // TODO: ajoutez vos opérations de service ici
     }
 
     // Utilisez un contrat de données comme indiqué dans l'exemple ci-après pour ajouter les types composites aux opérations de service.
