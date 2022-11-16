@@ -19,7 +19,7 @@ namespace RoutingServer
         {
             return openStreetMapTool.GetItinerary(origin, destination);
         }
-        public string GetNearestStation(String coord)
+        public JCDStation GetNearestStation(GeoCoordinate coord)
         {
             return jcdecauxTool.GetNearestStation(coord);
         }

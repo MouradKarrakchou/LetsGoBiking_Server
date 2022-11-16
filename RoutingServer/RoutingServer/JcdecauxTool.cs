@@ -10,6 +10,7 @@ using System.Net.Http;
 // GeoCordinates is in the System.Device.Location namespace, coming from System.Device which is an assembly reference.
 using System.Device.Location;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 //
 namespace RoutingServer
 {
@@ -17,8 +18,28 @@ namespace RoutingServer
     {
         public string apiKey { get; set; }
         string query, url, response;
+        List<JCDStation> stations;
 
-        public List<JCDContract> retrieveAllContract()
+        public JcdecauxTool()
+        {
+            stations = getAllStations();
+        }
+
+        private List<JCDStation> getAllStations()
+        {
+            List<JCDContract> contracts = getAllContracts();
+            List<JCDStation> stations = new List<JCDStation>();
+
+            for(int i = 0; i < contracts.Count; i++) {
+                string s = contracts[i].name;
+                stations.AddRange(getStations(s));
+            }
+            return stations;
+        }
+
+      
+
+        public List<JCDContract> getAllContracts()
         {
             query = "apiKey=" + apiKey;
             url = "https://api.jcdecaux.com/vls/v3/contracts";
@@ -26,7 +47,7 @@ namespace RoutingServer
             List<JCDContract> allContracts = JsonConvert.DeserializeObject<List<JCDContract>>(response);
             return (allContracts);
         }
-        public List<JCDStation> retrieveStations(string contract)
+        public List<JCDStation> getStations(string contract)
         {
             url = "https://api.jcdecaux.com/vls/v3/stations";
             query = "contract=" + contract + "&apiKey=" + apiKey;
@@ -47,15 +68,15 @@ namespace RoutingServer
             }
             return chosenStation;
         }
-        public JCDStation closestStationFromPosition(GeoCoordinate stationCoordinates, List<JCDStation> allStations)
+        public JCDStation GetNearestStation(GeoCoordinate stationCoordinates)
         {
 
-            JCDStation closestStation = allStations[0];
+            JCDStation closestStation = stations[0];
             GeoCoordinate candidatePos = new GeoCoordinate(closestStation.position.latitude, closestStation.position.longitude);
 
             Double minDistance = stationCoordinates.GetDistanceTo(candidatePos);
 
-            foreach (JCDStation item in allStations)
+            foreach (JCDStation item in stations)
             {
                 // Find the current station's position.
                 candidatePos = new GeoCoordinate(item.position.latitude, item.position.longitude);
