@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Text.Json;
 // GeoCordinates is in the System.Device.Location namespace, coming from System.Device which is an assembly reference.
 using System.Device.Location;
+using Newtonsoft.Json;
 
 namespace RoutingServer
 {
