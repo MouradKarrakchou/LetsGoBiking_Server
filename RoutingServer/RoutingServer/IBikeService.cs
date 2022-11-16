@@ -15,7 +15,7 @@ namespace RoutingServer
         [OperationContract]
         string GetItinerary(String origin, String destination);
         [OperationContract]
-        string GetNearestStation(GeoCoordinate coord);
+        string GetNearestStation(String coord);
         [OperationContract]
         string createItinary(String origin, String station1, String station2, String destination);
 

@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBikeService.cs" />
+    <Compile Include="JcdecauxTool.cs" />
+    <Compile Include="OpenStreetMapTool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Bike.cs" />
   </ItemGroup>
