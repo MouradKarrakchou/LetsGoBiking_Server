@@ -1,2 +1,7 @@
 D:\Polytech\SI4\S7\MiddleWare\Projet\RoutingServer\RoutingServer\obj\Debug\RoutingServer.csproj.AssemblyReference.cache
 D:\Polytech\SI4\S7\MiddleWare\Projet\RoutingServer\RoutingServer\obj\Debug\RoutingServer.csproj.CoreCompileInputs.cache
+D:\Polytech\SI4\S7\MiddleWare\Projet\RoutingServer\RoutingServer\bin\Debug\RoutingServer.dll.config
+D:\Polytech\SI4\S7\MiddleWare\Projet\RoutingServer\RoutingServer\bin\Debug\RoutingServer.dll
+D:\Polytech\SI4\S7\MiddleWare\Projet\RoutingServer\RoutingServer\bin\Debug\RoutingServer.pdb
+D:\Polytech\SI4\S7\MiddleWare\Projet\RoutingServer\RoutingServer\obj\Debug\RoutingServer.dll
+D:\Polytech\SI4\S7\MiddleWare\Projet\RoutingServer\RoutingServer\obj\Debug\RoutingServer.pdb
