@@ -10,7 +10,7 @@ using System.Net.Http;
 // GeoCordinates is in the System.Device.Location namespace, coming from System.Device which is an assembly reference.
 using System.Device.Location;
 using Newtonsoft.Json;
-
+//
 namespace RoutingServer
 {
     internal class JcdecauxTool
@@ -23,7 +23,7 @@ namespace RoutingServer
             query = "apiKey=" + apiKey;
             url = "https://api.jcdecaux.com/vls/v3/contracts";
             response = JCDecauxAPICall(url, query).Result;
-            List<JCDContract> allContracts = JsonSerializer.Deserialize<List<JCDContract>>(response);
+            List<JCDContract> allContracts = JsonConvert.DeserializeObject<List<JCDContract>>(response);
             return (allContracts);
         }
         public List<JCDStation> retrieveStations(string contract)
@@ -31,7 +31,7 @@ namespace RoutingServer
             url = "https://api.jcdecaux.com/vls/v3/stations";
             query = "contract=" + contract + "&apiKey=" + apiKey;
             response = JCDecauxAPICall(url, query).Result;
-            List<JCDStation> allStations = JsonSerializer.Deserialize<List<JCDStation>>(response);
+            List<JCDStation> allStations = JsonConvert.DeserializeObject<List<JCDStation>>(response); ;
             return (allStations);
         }
         public JCDStation retrieveOneStation(int stationNumber, List<JCDStation> allStations)
