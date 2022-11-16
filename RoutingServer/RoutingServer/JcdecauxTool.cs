@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using System.Net.Http;
 // To use JsonSerializer, you need to add System.Text.Json. Depending on your project type and version, you may find it as assembly reference or Nuget package
 // (right-click on the project --> (add --> Reference) or Manage NuGet packages).
-using System.Text.Json;
 // GeoCordinates is in the System.Device.Location namespace, coming from System.Device which is an assembly reference.
 using System.Device.Location;
 using Newtonsoft.Json;
