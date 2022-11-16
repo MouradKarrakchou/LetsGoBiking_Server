@@ -18,11 +18,9 @@ namespace RoutingServer
     {
         public string apiKey { get; set; }
         string query, url, response;
-        List<JCDStation> stations;
 
         public JcdecauxTool()
         {
-            stations = getAllStations();
         }
 
         private List<JCDStation> getAllStations()
@@ -68,7 +66,7 @@ namespace RoutingServer
             }
             return chosenStation;
         }
-        public JCDStation GetNearestStation(GeoCoordinate stationCoordinates)
+        public JCDStation GetNearestStation(GeoCoordinate stationCoordinates, List<JCDStation> stations)
         {
 
             JCDStation closestStation = stations[0];
