@@ -21,7 +21,8 @@ namespace RoutingServer
         }
         public JCDStation GetNearestStation(GeoCoordinate coord)
         {
-            return jcdecauxTool.GetNearestStation(coord);
+            List<JCDStation> list = new List<JCDStation>();
+            return jcdecauxTool.GetNearestStation(coord, list);
         }
         public string createItinary(String origin, String station1, String station2, String destination)
         {
