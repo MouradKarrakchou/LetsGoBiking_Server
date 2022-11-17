@@ -112,7 +112,7 @@ namespace RoutingServer
         }
         public JCDStation GetNearestStation(GeoCoordinate coord, string cityName)
         {
-            return closestStationFromPosition(coord, retrieveStations(cityName));
+            return GetNearestStation(coord, getStations(cityName));
         }
 
         static async Task<string> JCDecauxAPICall(string url, string query)
