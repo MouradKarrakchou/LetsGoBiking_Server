@@ -15,18 +15,28 @@ namespace RoutingServer
         JcdecauxTool jcdecauxTool = new JcdecauxTool();
         OpenStreetMapTool openStreetMapTool = new OpenStreetMapTool();
 
-        public string GetItinerary(String origin, String destination)
+        public GeoLoca GetItinerary(String origin, String destination)
         {
-            return openStreetMapTool.GetItinerary(origin, destination);
+            GeoLoca originGeoLoca = openStreetMapTool.GetPositionWithAdress(origin);
+            GeoLoca destinationGeoLoca = openStreetMapTool.GetPositionWithAdress(destination);
+
+            JCDStation originStation = GetNearestStation(originGeoLoca);
+            JCDStation destinationStation = GetNearestStation(destinationGeoLoca);
+
+            return CreateItinary(originGeoLoca, originStation, destinationStation, destinationGeoLoca);
         }
-        public JCDStation GetNearestStation(GeoCoordinate coord)
+
+        public GeoLoca CreateItinary(GeoLoca originGeoLoca, JCDStation originStation, JCDStation destinationStation, GeoLoca destinationGeoLoca)
+        {
+           openStreetMapTool.createItinary(originGeoLoca.getGeoCoord(), originStation.getGeoCoord(), destinationStation.getGeoCoord(), destinationGeoLoca.getGeoCoord());
+            return new GeoLoca();
+        }
+
+        public JCDStation GetNearestStation(GeoLoca coord)
         {
             List<JCDStation> list = new List<JCDStation>();
-            return jcdecauxTool.GetNearestStation(coord, list);
+            return jcdecauxTool.GetNearestStation(coord.getGeoCoord(), list);
         }
-        public string createItinary(String origin, String station1, String station2, String destination)
-        {
-            return openStreetMapTool.createItinary(origin, station1, station2, destination);
-        }
+
     }
 }

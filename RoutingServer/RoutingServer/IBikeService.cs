@@ -13,12 +13,11 @@ namespace RoutingServer
     public interface IBikeService
     {
         [OperationContract]
-        string GetItinerary(String origin, String destination);
+        GeoLoca GetItinerary(String origin, String destination);
         [OperationContract]
-        JCDStation GetNearestStation(GeoCoordinate coord);
+        JCDStation GetNearestStation(GeoLoca coord);
         [OperationContract]
-        string createItinary(String origin, String station1, String station2, String destination);
-
+        GeoLoca CreateItinary(GeoLoca originGeoLoca, JCDStation originStation, JCDStation destinationStation, GeoLoca destinationGeoLoca);
     }
 
     // Utilisez un contrat de données comme indiqué dans l'exemple ci-après pour ajouter les types composites aux opérations de service.

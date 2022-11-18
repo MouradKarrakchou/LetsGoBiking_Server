@@ -135,6 +135,11 @@ namespace RoutingServer
         public int number { get; set; }
         public string name { get; set; }
         public Position position { get; set; }
+
+        internal GeoCoordinate getGeoCoord()
+        {
+            return new GeoCoordinate(position.latitude, position.longitude);
+        }
     }
 
     public class Position
