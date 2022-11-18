@@ -13,12 +13,11 @@ namespace RoutingServer
 {
     class OpenStreetMapTool
     {
-
-        string query, url, response, apiKey;
+        string apiKey = "5b3ce3597851110001cf6248b0f9aba6d4384d7195f01c6be0f71578";
+        string query, url, response;
 
         public GeoLoca GetPositionWithAdress(string adress)
         {
-            apiKey = "5b3ce3597851110001cf6248b0f9aba6d4384d7195f01c6be0f71578";
             query = "api_key=" + apiKey;
             query = query + "&" + "text=" + adress;
             url = "https://api.openrouteservice.org/geocode/autocomplete";
@@ -37,6 +36,9 @@ namespace RoutingServer
 
         public void createItinary(GeoCoordinate geoCoordinate1, GeoCoordinate geoCoordinate2, GeoCoordinate geoCoordinate3, GeoCoordinate geoCoordinate4)
         {
+            string url = "https://api.openrouteservice.org/v2/directions/driving-car/geojson";
+            query = "api_key=" + apiKey;
+            //POST REQUEST
             Geojson geojson = new Geojson();
             geojson.addCoordonate(geoCoordinate1);
             geojson.addCoordonate(geoCoordinate2);
