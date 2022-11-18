@@ -51,7 +51,7 @@ namespace RoutingServer
     public class Properties
     {
         public string country { get; set; }
-        public string region { get; set; }
+        public string locality { get; set; }
     }
 
 }
