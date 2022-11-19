@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Device.Location;
 using Nest;
 using GeoCoordinate = System.Device.Location.GeoCoordinate;
+using Newtonsoft.Json.Linq;
 
 namespace RoutingServer
 {
@@ -46,6 +47,22 @@ namespace RoutingServer
             geojson.addCoordonate(geoCoordinate4);
             string postBody = JsonConvert.SerializeObject(geojson);
             Console.WriteLine(postBody);
+            
+            Task<string>  result = DirectionsServicePOST(url, query, new StringContent(postBody, Encoding.UTF8, "application/json"));
+            string jsonResult = result.Result;
+            Console.WriteLine(jsonResult);
+            Itinary itinary = JsonConvert.DeserializeObject<Itinary>(jsonResult);
+
+            Console.WriteLine(itinary);
+
+        }
+
+        static async Task<string> DirectionsServicePOST(string url, string query, HttpContent body)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.PostAsync(url + "?" + query, body);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
         }
     }
 
@@ -65,6 +82,17 @@ namespace RoutingServer
             return features[0].properties.locality;
         }
     }
+
+    public class Itinary
+    {
+        public List<FeatureItinary> features { get; set; }
+    }
+
+    public class FeatureItinary
+    {
+        public GeometryItinary geometry { get; set; }
+        public Properties properties { get; set; }
+    }
     public class Feature
     {
         public Geometry geometry { get; set; }
@@ -74,10 +102,36 @@ namespace RoutingServer
     {
         public List<Double> coordinates { get; set; }
     }
+    public class GeometryItinary
+    {
+        public List<List<Double>> coordinates { get; set; }
+    }
     public class Properties
     {
         public string country { get; set; }
         public string locality { get; set; }
+        public List<Segment> segments { get; set; }
+
+    }
+    public class Segment
+    {
+        public double distance { get; set; }
+        public double duration { get; set; }
+        public List<Step> steps { get; set; }
+    }
+    public class Step
+    {
+        public double distance { get; set; }
+        public double duration { get; set; }
+        public int type { get; set; }
+        public string instruction { get; set; }
+        public string name { get; set; }
+        public List<int> way_points { get; set; }
+    }
+    public class Summary
+    {
+        public double distance { get; set; }
+        public double duration { get; set; }
     }
     public class Geojson
     {
