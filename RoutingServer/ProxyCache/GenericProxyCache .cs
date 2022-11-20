@@ -36,6 +36,23 @@ namespace ProxyCache
             return value;
         }
 
+        internal T UseCache(string CacheItemName)
+        {
+            ObjectCache cache = MemoryCache.Default;
+            string fileContents = cache[CacheItemName] as string;
+            if (fileContents == null)
+            {
+                new JCDecauxItem<T>("CacheItemName");
+                CacheItemPolicy policy = new CacheItemPolicy();
+                policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(10.0);
+
+                cache.Set(CacheItemName, str, policy);
+
+            }
+            fileContents = cache[CacheItemName] as string;
+            return (fileContents);
+        }
+
 
     }
 }

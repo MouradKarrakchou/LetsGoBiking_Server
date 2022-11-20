@@ -12,7 +12,7 @@ using System.Device.Location;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 //
-namespace RoutingServer
+namespace ProxyCache
 {
     internal class JcdecauxTool
     {

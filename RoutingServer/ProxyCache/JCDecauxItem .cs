@@ -6,11 +6,21 @@ using System.Threading.Tasks;
 
 namespace ProxyCache
 {
-    internal class JCDecauxItem<T>
+    internal class JCDecauxItem <T>
     {
+        List<T> item;
+
+        public JCDecauxItem(List<T> item)
+        {
+            this.item = item;
+        }
         public JCDecauxItem(string item)
         {
-            //makes a request to the JCDecaux API to create a JCDecauxItem object
+            JcdecauxTool jcdecaux = new JcdecauxTool();
+            if (item.Equals("/contract"))
+            {
+                new JCDecauxItem<JCDContract>(jcdecaux.getAllContracts());
+            }
         }
     }
 }
