@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Nest;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,19 +10,18 @@ namespace ProxyCache
 {
     internal class JCDecauxItem <T>
     {
-        List<T> item;
+        T item;
 
-        public JCDecauxItem(List<T> item)
-        {
-            this.item = item;
-        }
-        public JCDecauxItem(string item)
+        public JCDecauxItem(string requestItem)
         {
             JcdecauxTool jcdecaux = new JcdecauxTool();
-            if (item.Equals("/contract"))
-            {
-                new JCDecauxItem<JCDContract>(jcdecaux.getAllContracts());
-            }
+            Task<String> result = jcdecaux.request(requestItem);
+            item = JsonConvert.DeserializeObject<T>(result.Result);
+        }
+
+        internal T getItem()
+        {
+            return item;
         }
     }
 }

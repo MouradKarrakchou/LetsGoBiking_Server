@@ -4,11 +4,12 @@ using System.Runtime.Caching;
 
 namespace ProxyCache
 {
-    internal class GenericProxyCache<T> where T : new()
+    internal class GenericProxyCache<T> where T : class
     {
         public DateTimeOffset dt_default = ObjectCache.InfiniteAbsoluteExpiration;
         Dictionary<string, T> dict = new Dictionary<string, T>();
         DateTimeOffset expirationTime = DateTimeOffset.Now.AddMinutes(1);
+
 
         public T Get(string CacheItemName) {
             return get(CacheItemName, dt_default);
@@ -36,10 +37,10 @@ namespace ProxyCache
             return value;
         }
 
-        private string useCache(string CacheItemName)
+        private T useCache(string CacheItemName) 
         {
-            ObjectCache cache = MemoryCache.Default;
-            string fileContents = cache[CacheItemName] as string;
+            T fileContents = MemoryCache.Default[CacheItemName] as T;
+            JCDecauxItem<T> item;
             if (fileContents == null)
             {
                 Console.WriteLine("updating cache");
@@ -47,10 +48,14 @@ namespace ProxyCache
                 policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(5.0);
 
                 JcdecauxTool jcdecauxTool = new JcdecauxTool();
-                cache.Set(CacheItemName, jcdecauxTool.getAllContracts(), policy);
 
+                item = new JCDecauxItem<T>(CacheItemName);
+                MemoryCache.Default.Add(CacheItemName, item, policy);
+
+                //cache.Set(CacheItemName, jcdecauxTool.getAllContracts(), policy);
             }
-            return(fileContents);
+            fileContents = MemoryCache.Default[CacheItemName] as T;
+            return (fileContents);
         }
 
 

@@ -122,7 +122,17 @@ namespace ProxyCache
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
-       
+        
+
+        internal async Task<string> request(string item)
+        {
+            query = "apiKey=" + apiKey;
+            url = "https://api.jcdecaux.com/vls/v3/"+item;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync(url + "?" + query);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
     }
 
     public class JCDContract
