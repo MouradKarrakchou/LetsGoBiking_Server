@@ -36,21 +36,21 @@ namespace ProxyCache
             return value;
         }
 
-        internal T UseCache(string CacheItemName)
+        private string useCache(string CacheItemName)
         {
             ObjectCache cache = MemoryCache.Default;
             string fileContents = cache[CacheItemName] as string;
             if (fileContents == null)
             {
-                new JCDecauxItem<T>("CacheItemName");
+                Console.WriteLine("updating cache");
                 CacheItemPolicy policy = new CacheItemPolicy();
-                policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(10.0);
+                policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(5.0);
 
-                cache.Set(CacheItemName, str, policy);
+                JcdecauxTool jcdecauxTool = new JcdecauxTool();
+                cache.Set(CacheItemName, jcdecauxTool.getAllContracts(), policy);
 
             }
-            fileContents = cache[CacheItemName] as string;
-            return (fileContents);
+            return(fileContents);
         }
 
 
