@@ -5,6 +5,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using RoutingServer.ServiceReference1;
+
 
 namespace RoutingServer
 {
@@ -29,7 +31,11 @@ namespace RoutingServer
         public Itinary CreateItinary(GeoLoca originGeoLoca, JCDStation originStation, JCDStation destinationStation, GeoLoca destinationGeoLoca)
         {
 
-            return openStreetMapTool.createItinary(originGeoLoca.getGeoCoord(), originStation.getGeoCoord(), destinationStation.getGeoCoord(), destinationGeoLoca.getGeoCoord());
+            return openStreetMapTool.createItinary(originGeoLoca.getGeoCoord(), getGeoCoord(originStation), getGeoCoord(destinationStation), destinationGeoLoca.getGeoCoord());
+        }
+        internal GeoCoordinate getGeoCoord(JCDStation station)
+        {
+            return new GeoCoordinate(station.position.latitude, station.position.longitude);
         }
 
         public JCDStation GetNearestStation(GeoLoca coord)

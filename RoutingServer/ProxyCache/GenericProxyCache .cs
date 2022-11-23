@@ -27,7 +27,8 @@ namespace ProxyCache
 
         private T useCache(string CacheItemName, DateTimeOffset dt) 
         {
-            T fileContents = MemoryCache.Default[CacheItemName] as T;
+            ObjectCache cache = MemoryCache.Default;
+            T fileContents = cache[CacheItemName] as T;
             JCDecauxItem<T> item;
             if (fileContents == null)
             {
@@ -35,14 +36,12 @@ namespace ProxyCache
                 CacheItemPolicy policy = new CacheItemPolicy();
                 policy.AbsoluteExpiration = dt;
 
-                JcdecauxTool jcdecauxTool = new JcdecauxTool();
+                JcdecauxToolProxy jcdecauxTool = new JcdecauxToolProxy();
 
                 item = new JCDecauxItem<T>(CacheItemName);
-                MemoryCache.Default.Add(CacheItemName, item, policy);
-
-                //cache.Set(CacheItemName, jcdecauxTool.getAllContracts(), policy);
+                cache.Add(CacheItemName, item, policy);
             }
-            fileContents = MemoryCache.Default[CacheItemName] as T;
+            fileContents = cache[CacheItemName] as T;
             return (fileContents);
         }
 

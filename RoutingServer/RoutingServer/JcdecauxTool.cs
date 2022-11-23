@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Device.Location;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using RoutingServer.ServiceReference1;
 //
 namespace RoutingServer
 {
@@ -39,19 +40,15 @@ namespace RoutingServer
 
         public List<JCDContract> getAllContracts()
         {
-            query = "apiKey=" + apiKey;
-            url = "https://api.jcdecaux.com/vls/v3/contracts";
-            response = JCDecauxAPICall(url, query).Result;
-            List<JCDContract> allContracts = JsonConvert.DeserializeObject<List<JCDContract>>(response);
-            return (allContracts);
+            ProxyClient proxyClient = new ProxyClient();
+            JCDContract[] jCDContracts = proxyClient.getAllContracts();
+            return (jCDContracts.ToList()) ;
         }
         public List<JCDStation> getStations(string contract)
         {
-            url = "https://api.jcdecaux.com/vls/v3/stations";
-            query = "contract=" + contract + "&apiKey=" + apiKey;
-            response = JCDecauxAPICall(url, query).Result;
-            List<JCDStation> allStations = JsonConvert.DeserializeObject<List<JCDStation>>(response);
-            return (allStations);
+            ProxyClient proxyClient = new ProxyClient();
+            JCDStation[] jCDStations = proxyClient.getStations(contract);
+            return (jCDStations.ToList());
         }
         public JCDStation retrieveOneStation(int stationNumber, List<JCDStation> allStations)
         {
@@ -115,36 +112,10 @@ namespace RoutingServer
             return GetNearestStation(coord, getStations(cityName));
         }
 
-        static async Task<string> JCDecauxAPICall(string url, string query)
+        static string JCDecauxAPICall(string url, string query)
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync(url + "?" + query);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsStringAsync();
+            return (url + "?" + query);
         }
        
-    }
-
-    public class JCDContract
-    {
-        public string name { get; set; }
-    }
-
-    public class JCDStation
-    {
-        public int number { get; set; }
-        public string name { get; set; }
-        public Position position { get; set; }
-
-        internal GeoCoordinate getGeoCoord()
-        {
-            return new GeoCoordinate(position.latitude, position.longitude);
-        }
-    }
-
-    public class Position
-    {
-        public Double latitude { get; set; }
-        public Double longitude { get; set; }
     }
 }

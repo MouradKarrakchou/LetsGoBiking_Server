@@ -13,10 +13,10 @@ namespace ProxyCache
     public interface IProxy
     {
         [OperationContract]
-        RoutingServer.JCDStation GetNearestStation(GeoCoordinate coord);
+        List<JCDContract> getAllContracts();
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        List<JCDStation> getStations(string contract);
 
         // TODO: ajoutez vos opérations de service ici
     }
