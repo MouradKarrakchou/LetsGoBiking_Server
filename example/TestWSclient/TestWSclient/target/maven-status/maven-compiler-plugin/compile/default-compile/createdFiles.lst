@@ -1,0 +1,11 @@
+com\soap\ws\client\generated\IMathsOperations.class
+com\soap\ws\client\generated\package-info.class
+com\soap\ws\client\generated\MathsOperations.class
+com\soap\ws\client\generated\Subtract.class
+com\soap\ws\client\generated\MultiplyResponse.class
+com\soap\ws\client\generated\ObjectFactory.class
+com\soap\ws\client\generated\Add.class
+com\soap\ws\client\generated\Multiply.class
+com\soc\testwsclient\TestWSclient.class
+com\soap\ws\client\generated\SubtractResponse.class
+com\soap\ws\client\generated\AddResponse.class
