@@ -15,7 +15,7 @@ namespace RoutingServer
         JcdecauxTool jcdecauxTool = new JcdecauxTool();
         OpenStreetMapTool openStreetMapTool = new OpenStreetMapTool();
 
-        public GeoLoca GetItinerary(String origin, String destination)
+        public Itinary GetItinerary(String origin, String destination)
         {
             GeoLoca originGeoLoca = openStreetMapTool.GetPositionWithAdress(origin);
             GeoLoca destinationGeoLoca = openStreetMapTool.GetPositionWithAdress(destination);
@@ -26,16 +26,16 @@ namespace RoutingServer
             return CreateItinary(originGeoLoca, originStation, destinationStation, destinationGeoLoca);
         }
 
-        public GeoLoca CreateItinary(GeoLoca originGeoLoca, JCDStation originStation, JCDStation destinationStation, GeoLoca destinationGeoLoca)
+        public Itinary CreateItinary(GeoLoca originGeoLoca, JCDStation originStation, JCDStation destinationStation, GeoLoca destinationGeoLoca)
         {
-           openStreetMapTool.createItinary(originGeoLoca.getGeoCoord(), originStation.getGeoCoord(), destinationStation.getGeoCoord(), destinationGeoLoca.getGeoCoord());
-            return new GeoLoca();
+
+            return openStreetMapTool.createItinary(originGeoLoca.getGeoCoord(), originStation.getGeoCoord(), destinationStation.getGeoCoord(), destinationGeoLoca.getGeoCoord());
         }
 
         public JCDStation GetNearestStation(GeoLoca coord)
         {
             List<JCDStation> list = new List<JCDStation>();
-            return jcdecauxTool.GetNearestStation(coord.getGeoCoord(), list);
+            return jcdecauxTool.GetNearestStation(coord.getGeoCoord(), coord.getCity());
         }
 
     }

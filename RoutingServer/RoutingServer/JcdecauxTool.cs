@@ -16,7 +16,7 @@ namespace RoutingServer
 {
     internal class JcdecauxTool
     {
-        public string apiKey { get; set; }
+        public string apiKey= "3aff999b9fe29460c5a8b1a3ca8d551d5a60eda7";
         string query, url, response;
 
         public JcdecauxTool()
@@ -50,7 +50,7 @@ namespace RoutingServer
             url = "https://api.jcdecaux.com/vls/v3/stations";
             query = "contract=" + contract + "&apiKey=" + apiKey;
             response = JCDecauxAPICall(url, query).Result;
-            List<JCDStation> allStations = JsonConvert.DeserializeObject<List<JCDStation>>(response); ;
+            List<JCDStation> allStations = JsonConvert.DeserializeObject<List<JCDStation>>(response);
             return (allStations);
         }
         public JCDStation retrieveOneStation(int stationNumber, List<JCDStation> allStations)

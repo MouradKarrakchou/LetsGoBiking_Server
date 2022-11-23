@@ -35,7 +35,7 @@ namespace RoutingServer
             return await response.Content.ReadAsStringAsync();
         }
 
-        public void createItinary(GeoCoordinate geoCoordinate1, GeoCoordinate geoCoordinate2, GeoCoordinate geoCoordinate3, GeoCoordinate geoCoordinate4)
+        public Itinary createItinary(GeoCoordinate geoCoordinate1, GeoCoordinate geoCoordinate2, GeoCoordinate geoCoordinate3, GeoCoordinate geoCoordinate4)
         {
             string url = "https://api.openrouteservice.org/v2/directions/driving-car/geojson";
             query = "api_key=" + apiKey;
@@ -53,7 +53,7 @@ namespace RoutingServer
             Console.WriteLine(jsonResult);
             Itinary itinary = JsonConvert.DeserializeObject<Itinary>(jsonResult);
 
-            Console.WriteLine(itinary);
+            return(itinary);
 
         }
 
@@ -73,9 +73,9 @@ namespace RoutingServer
 
         internal GeoCoordinate getGeoCoord()
         {
-            double x = features[0].geometry.coordinates[0];
-            double y = features[0].geometry.coordinates[1];
-            return new GeoCoordinate(x, y);
+            double latitude = features[0].geometry.coordinates[1];
+            double longitude = features[0].geometry.coordinates[0];
+            return new GeoCoordinate(latitude,longitude);
         }
         internal string getCity()
         {
