@@ -1,16 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32126.315
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoutingServer", "RoutingServer\RoutingServer.csproj", "{D9E2909E-300E-45CD-8683-CE97435705DE}"
-	ProjectSection(ProjectDependencies) = postProject
-		{8CFDBB7C-B90D-4F6E-8C14-549436E2A202} = {8CFDBB7C-B90D-4F6E-8C14-549436E2A202}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testAPI", "testAPI\testAPI.csproj", "{624C55A9-1CF9-4255-A489-F5640F1EA87A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyCache", "ProxyCache\ProxyCache.csproj", "{8CFDBB7C-B90D-4F6E-8C14-549436E2A202}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,14 +15,6 @@ Global
 		{D9E2909E-300E-45CD-8683-CE97435705DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9E2909E-300E-45CD-8683-CE97435705DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9E2909E-300E-45CD-8683-CE97435705DE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{624C55A9-1CF9-4255-A489-F5640F1EA87A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{624C55A9-1CF9-4255-A489-F5640F1EA87A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{624C55A9-1CF9-4255-A489-F5640F1EA87A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{624C55A9-1CF9-4255-A489-F5640F1EA87A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8CFDBB7C-B90D-4F6E-8C14-549436E2A202}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8CFDBB7C-B90D-4F6E-8C14-549436E2A202}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8CFDBB7C-B90D-4F6E-8C14-549436E2A202}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8CFDBB7C-B90D-4F6E-8C14-549436E2A202}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
