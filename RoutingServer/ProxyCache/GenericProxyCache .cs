@@ -12,32 +12,20 @@ namespace ProxyCache
 
 
         public T Get(string CacheItemName) {
-            return get(CacheItemName, dt_default);
+            return useCache(CacheItemName, dt_default);
 
         }
         public T Get(string CacheItemName, double dt_seconds) {
             DateTimeOffset dt = DateTime.Now.AddSeconds(dt_seconds); //In this case, the Expiration Time is "dt_default"
-            return get(CacheItemName, dt);
+            return useCache(CacheItemName, dt);
 
         }
         public T Get(string CacheItemName, DateTimeOffset dt) {
-             return get(CacheItemName, dt);
+             return useCache(CacheItemName, dt);
         }
 
-        private T get(string CacheItemName, DateTimeOffset dt)
-        {
-            T value;
-            bool res = dict.TryGetValue(CacheItemName, out value);
-            if (res == false || value == null)
-            {//  If CacheItemName doesn't exist or has a null content 
-                value = new T();//then create a new T object
-                dict.Add(CacheItemName, value); // and put it in the cache
-                expirationTime = dt; //In this case, the Expiration Time is <dt>
-            }
-            return value;
-        }
 
-        private T useCache(string CacheItemName) 
+        private T useCache(string CacheItemName, DateTimeOffset dt) 
         {
             T fileContents = MemoryCache.Default[CacheItemName] as T;
             JCDecauxItem<T> item;
@@ -45,7 +33,7 @@ namespace ProxyCache
             {
                 Console.WriteLine("updating cache");
                 CacheItemPolicy policy = new CacheItemPolicy();
-                policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(5.0);
+                policy.AbsoluteExpiration = dt;
 
                 JcdecauxTool jcdecauxTool = new JcdecauxTool();
 
