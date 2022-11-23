@@ -4,15 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc93b0e1-63dc-41c4-8ffb-405f98e3a200" name="Changes" comment="jajoute la dependance">
-      <change afterPath="$PROJECT_DIR$/../../example/TestWSclient/.idea/TestWSclient.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../example/TestWSclient/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../example/TestWSclient/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../example/TestWSclient/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="cc93b0e1-63dc-41c4-8ffb-405f98e3a200" name="Changes" comment="Java client">
+      <change afterPath="$PROJECT_DIR$/../../.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soap/ws/client/generated/ArrayOfdouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soap/ws/client/generated/ArrayOfdouble.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soap/ws/client/generated/GetItineraryResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soap/ws/client/generated/GetItineraryResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soap/ws/client/generated/IBikeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soap/ws/client/generated/IBikeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soap/ws/client/generated/ObjectFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soap/ws/client/generated/ObjectFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../RoutingServer/RoutingServer/Bike.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../RoutingServer/RoutingServer/Bike.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../RoutingServer/RoutingServer/IBikeService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../RoutingServer/RoutingServer/IBikeService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../RoutingServer/RoutingServer/JcdecauxTool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../RoutingServer/RoutingServer/JcdecauxTool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../RoutingServer/RoutingServer/OpenStreetMapTool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../RoutingServer/RoutingServer/OpenStreetMapTool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../RoutingServer/RoutingServer/obj/Debug/RoutingServer.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../RoutingServer/RoutingServer/obj/Debug/RoutingServer.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../RoutingServer/RoutingServer/obj/Debug/RoutingServer.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../RoutingServer/RoutingServer/obj/Debug/RoutingServer.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../RoutingServer/RoutingServer/obj/Debug/RoutingServer.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../RoutingServer/RoutingServer/obj/Debug/RoutingServer.csproj.FileListAbsolute.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,17 +45,9 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Polytech/SI4/S7/MiddleWare/Projet/example/TestWSclient",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
   <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.App" />
@@ -95,6 +101,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Java client" />

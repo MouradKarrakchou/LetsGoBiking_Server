@@ -28,17 +28,16 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _GeoLoca_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "GeoLoca");
-    private final static QName _ArrayOfFeature_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "ArrayOfFeature");
-    private final static QName _Feature_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "Feature");
-    private final static QName _Geometry_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "Geometry");
+    private final static QName _Itinary_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "Itinary");
+    private final static QName _ArrayOfFeatureItinary_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "ArrayOfFeatureItinary");
+    private final static QName _FeatureItinary_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "FeatureItinary");
+    private final static QName _GeometryItinary_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "GeometryItinary");
     private final static QName _Properties_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "Properties");
     private final static QName _ArrayOfSegment_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "ArrayOfSegment");
     private final static QName _Segment_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "Segment");
     private final static QName _ArrayOfStep_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "ArrayOfStep");
     private final static QName _Step_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "Step");
-    private final static QName _JCDStation_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "JCDStation");
-    private final static QName _Position_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "Position");
+    private final static QName _ArrayOfArrayOfdouble_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfArrayOfdouble");
     private final static QName _ArrayOfdouble_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfdouble");
     private final static QName _ArrayOfint_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfint");
     private final static QName _AnyType_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyType");
@@ -65,13 +64,6 @@ public class ObjectFactory {
     private final static QName _GetItineraryOrigin_QNAME = new QName("http://tempuri.org/", "origin");
     private final static QName _GetItineraryDestination_QNAME = new QName("http://tempuri.org/", "destination");
     private final static QName _GetItineraryResponseGetItineraryResult_QNAME = new QName("http://tempuri.org/", "GetItineraryResult");
-    private final static QName _GetNearestStationCoord_QNAME = new QName("http://tempuri.org/", "coord");
-    private final static QName _GetNearestStationResponseGetNearestStationResult_QNAME = new QName("http://tempuri.org/", "GetNearestStationResult");
-    private final static QName _CreateItinaryOriginGeoLoca_QNAME = new QName("http://tempuri.org/", "originGeoLoca");
-    private final static QName _CreateItinaryOriginStation_QNAME = new QName("http://tempuri.org/", "originStation");
-    private final static QName _CreateItinaryDestinationStation_QNAME = new QName("http://tempuri.org/", "destinationStation");
-    private final static QName _CreateItinaryDestinationGeoLoca_QNAME = new QName("http://tempuri.org/", "destinationGeoLoca");
-    private final static QName _CreateItinaryResponseCreateItinaryResult_QNAME = new QName("http://tempuri.org/", "CreateItinaryResult");
     private final static QName _StepInstruction_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "instruction");
     private final static QName _StepName_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "name");
     private final static QName _StepWayPoints_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "way_points");
@@ -79,11 +71,10 @@ public class ObjectFactory {
     private final static QName _PropertiesCountry_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "country");
     private final static QName _PropertiesLocality_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "locality");
     private final static QName _PropertiesSegments_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "segments");
-    private final static QName _GeometryCoordinates_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "coordinates");
-    private final static QName _FeatureGeometry_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "geometry");
-    private final static QName _FeatureProperties_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "properties");
-    private final static QName _JCDStationPosition_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "position");
-    private final static QName _GeoLocaFeatures_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "features");
+    private final static QName _GeometryItinaryCoordinates_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "coordinates");
+    private final static QName _FeatureItinaryGeometry_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "geometry");
+    private final static QName _FeatureItinaryProperties_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "properties");
+    private final static QName _ItinaryFeatures_QNAME = new QName("http://schemas.datacontract.org/2004/07/RoutingServer", "features");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.soap.ws.client.generated
@@ -109,75 +100,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GeoLoca }
+     * Create an instance of {@link Itinary }
      * 
      */
-    public GeoLoca createGeoLoca() {
-        return new GeoLoca();
+    public Itinary createItinary() {
+        return new Itinary();
     }
 
     /**
-     * Create an instance of {@link GetNearestStation }
+     * Create an instance of {@link ArrayOfFeatureItinary }
      * 
      */
-    public GetNearestStation createGetNearestStation() {
-        return new GetNearestStation();
+    public ArrayOfFeatureItinary createArrayOfFeatureItinary() {
+        return new ArrayOfFeatureItinary();
     }
 
     /**
-     * Create an instance of {@link GetNearestStationResponse }
+     * Create an instance of {@link FeatureItinary }
      * 
      */
-    public GetNearestStationResponse createGetNearestStationResponse() {
-        return new GetNearestStationResponse();
+    public FeatureItinary createFeatureItinary() {
+        return new FeatureItinary();
     }
 
     /**
-     * Create an instance of {@link JCDStation }
+     * Create an instance of {@link GeometryItinary }
      * 
      */
-    public JCDStation createJCDStation() {
-        return new JCDStation();
-    }
-
-    /**
-     * Create an instance of {@link CreateItinary }
-     * 
-     */
-    public CreateItinary createCreateItinary() {
-        return new CreateItinary();
-    }
-
-    /**
-     * Create an instance of {@link CreateItinaryResponse }
-     * 
-     */
-    public CreateItinaryResponse createCreateItinaryResponse() {
-        return new CreateItinaryResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfFeature }
-     * 
-     */
-    public ArrayOfFeature createArrayOfFeature() {
-        return new ArrayOfFeature();
-    }
-
-    /**
-     * Create an instance of {@link Feature }
-     * 
-     */
-    public Feature createFeature() {
-        return new Feature();
-    }
-
-    /**
-     * Create an instance of {@link Geometry }
-     * 
-     */
-    public Geometry createGeometry() {
-        return new Geometry();
+    public GeometryItinary createGeometryItinary() {
+        return new GeometryItinary();
     }
 
     /**
@@ -221,11 +172,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Position }
+     * Create an instance of {@link ArrayOfArrayOfdouble }
      * 
      */
-    public Position createPosition() {
-        return new Position();
+    public ArrayOfArrayOfdouble createArrayOfArrayOfdouble() {
+        return new ArrayOfArrayOfdouble();
     }
 
     /**
@@ -245,55 +196,55 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GeoLoca }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Itinary }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link GeoLoca }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link Itinary }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "GeoLoca")
-    public JAXBElement<GeoLoca> createGeoLoca(GeoLoca value) {
-        return new JAXBElement<GeoLoca>(_GeoLoca_QNAME, GeoLoca.class, null, value);
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "Itinary")
+    public JAXBElement<Itinary> createItinary(Itinary value) {
+        return new JAXBElement<Itinary>(_Itinary_QNAME, Itinary.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfFeature }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfFeatureItinary }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfFeature }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfFeatureItinary }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "ArrayOfFeature")
-    public JAXBElement<ArrayOfFeature> createArrayOfFeature(ArrayOfFeature value) {
-        return new JAXBElement<ArrayOfFeature>(_ArrayOfFeature_QNAME, ArrayOfFeature.class, null, value);
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "ArrayOfFeatureItinary")
+    public JAXBElement<ArrayOfFeatureItinary> createArrayOfFeatureItinary(ArrayOfFeatureItinary value) {
+        return new JAXBElement<ArrayOfFeatureItinary>(_ArrayOfFeatureItinary_QNAME, ArrayOfFeatureItinary.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Feature }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FeatureItinary }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link Feature }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link FeatureItinary }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "Feature")
-    public JAXBElement<Feature> createFeature(Feature value) {
-        return new JAXBElement<Feature>(_Feature_QNAME, Feature.class, null, value);
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "FeatureItinary")
+    public JAXBElement<FeatureItinary> createFeatureItinary(FeatureItinary value) {
+        return new JAXBElement<FeatureItinary>(_FeatureItinary_QNAME, FeatureItinary.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Geometry }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GeometryItinary }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link Geometry }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link GeometryItinary }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "Geometry")
-    public JAXBElement<Geometry> createGeometry(Geometry value) {
-        return new JAXBElement<Geometry>(_Geometry_QNAME, Geometry.class, null, value);
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "GeometryItinary")
+    public JAXBElement<GeometryItinary> createGeometryItinary(GeometryItinary value) {
+        return new JAXBElement<GeometryItinary>(_GeometryItinary_QNAME, GeometryItinary.class, null, value);
     }
 
     /**
@@ -362,29 +313,16 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link JCDStation }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfArrayOfdouble }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link JCDStation }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfArrayOfdouble }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "JCDStation")
-    public JAXBElement<JCDStation> createJCDStation(JCDStation value) {
-        return new JAXBElement<JCDStation>(_JCDStation_QNAME, JCDStation.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Position }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link Position }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "Position")
-    public JAXBElement<Position> createPosition(Position value) {
-        return new JAXBElement<Position>(_Position_QNAME, Position.class, null, value);
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/Arrays", name = "ArrayOfArrayOfdouble")
+    public JAXBElement<ArrayOfArrayOfdouble> createArrayOfArrayOfdouble(ArrayOfArrayOfdouble value) {
+        return new JAXBElement<ArrayOfArrayOfdouble>(_ArrayOfArrayOfdouble_QNAME, ArrayOfArrayOfdouble.class, null, value);
     }
 
     /**
@@ -713,107 +651,16 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GeoLoca }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Itinary }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link GeoLoca }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link Itinary }{@code >}
      */
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetItineraryResult", scope = GetItineraryResponse.class)
-    public JAXBElement<GeoLoca> createGetItineraryResponseGetItineraryResult(GeoLoca value) {
-        return new JAXBElement<GeoLoca>(_GetItineraryResponseGetItineraryResult_QNAME, GeoLoca.class, GetItineraryResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GeoLoca }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link GeoLoca }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "coord", scope = GetNearestStation.class)
-    public JAXBElement<GeoLoca> createGetNearestStationCoord(GeoLoca value) {
-        return new JAXBElement<GeoLoca>(_GetNearestStationCoord_QNAME, GeoLoca.class, GetNearestStation.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link JCDStation }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link JCDStation }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetNearestStationResult", scope = GetNearestStationResponse.class)
-    public JAXBElement<JCDStation> createGetNearestStationResponseGetNearestStationResult(JCDStation value) {
-        return new JAXBElement<JCDStation>(_GetNearestStationResponseGetNearestStationResult_QNAME, JCDStation.class, GetNearestStationResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GeoLoca }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link GeoLoca }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "originGeoLoca", scope = CreateItinary.class)
-    public JAXBElement<GeoLoca> createCreateItinaryOriginGeoLoca(GeoLoca value) {
-        return new JAXBElement<GeoLoca>(_CreateItinaryOriginGeoLoca_QNAME, GeoLoca.class, CreateItinary.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link JCDStation }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link JCDStation }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "originStation", scope = CreateItinary.class)
-    public JAXBElement<JCDStation> createCreateItinaryOriginStation(JCDStation value) {
-        return new JAXBElement<JCDStation>(_CreateItinaryOriginStation_QNAME, JCDStation.class, CreateItinary.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link JCDStation }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link JCDStation }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "destinationStation", scope = CreateItinary.class)
-    public JAXBElement<JCDStation> createCreateItinaryDestinationStation(JCDStation value) {
-        return new JAXBElement<JCDStation>(_CreateItinaryDestinationStation_QNAME, JCDStation.class, CreateItinary.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GeoLoca }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link GeoLoca }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "destinationGeoLoca", scope = CreateItinary.class)
-    public JAXBElement<GeoLoca> createCreateItinaryDestinationGeoLoca(GeoLoca value) {
-        return new JAXBElement<GeoLoca>(_CreateItinaryDestinationGeoLoca_QNAME, GeoLoca.class, CreateItinary.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GeoLoca }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link GeoLoca }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "CreateItinaryResult", scope = CreateItinaryResponse.class)
-    public JAXBElement<GeoLoca> createCreateItinaryResponseCreateItinaryResult(GeoLoca value) {
-        return new JAXBElement<GeoLoca>(_CreateItinaryResponseCreateItinaryResult_QNAME, GeoLoca.class, CreateItinaryResponse.class, value);
+    public JAXBElement<Itinary> createGetItineraryResponseGetItineraryResult(Itinary value) {
+        return new JAXBElement<Itinary>(_GetItineraryResponseGetItineraryResult_QNAME, Itinary.class, GetItineraryResponse.class, value);
     }
 
     /**
@@ -908,29 +755,29 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfdouble }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfArrayOfdouble }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfdouble }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfArrayOfdouble }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "coordinates", scope = Geometry.class)
-    public JAXBElement<ArrayOfdouble> createGeometryCoordinates(ArrayOfdouble value) {
-        return new JAXBElement<ArrayOfdouble>(_GeometryCoordinates_QNAME, ArrayOfdouble.class, Geometry.class, value);
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "coordinates", scope = GeometryItinary.class)
+    public JAXBElement<ArrayOfArrayOfdouble> createGeometryItinaryCoordinates(ArrayOfArrayOfdouble value) {
+        return new JAXBElement<ArrayOfArrayOfdouble>(_GeometryItinaryCoordinates_QNAME, ArrayOfArrayOfdouble.class, GeometryItinary.class, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Geometry }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GeometryItinary }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link Geometry }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link GeometryItinary }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "geometry", scope = Feature.class)
-    public JAXBElement<Geometry> createFeatureGeometry(Geometry value) {
-        return new JAXBElement<Geometry>(_FeatureGeometry_QNAME, Geometry.class, Feature.class, value);
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "geometry", scope = FeatureItinary.class)
+    public JAXBElement<GeometryItinary> createFeatureItinaryGeometry(GeometryItinary value) {
+        return new JAXBElement<GeometryItinary>(_FeatureItinaryGeometry_QNAME, GeometryItinary.class, FeatureItinary.class, value);
     }
 
     /**
@@ -941,48 +788,22 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link Properties }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "properties", scope = Feature.class)
-    public JAXBElement<Properties> createFeatureProperties(Properties value) {
-        return new JAXBElement<Properties>(_FeatureProperties_QNAME, Properties.class, Feature.class, value);
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "properties", scope = FeatureItinary.class)
+    public JAXBElement<Properties> createFeatureItinaryProperties(Properties value) {
+        return new JAXBElement<Properties>(_FeatureItinaryProperties_QNAME, Properties.class, FeatureItinary.class, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfFeatureItinary }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfFeatureItinary }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "name", scope = JCDStation.class)
-    public JAXBElement<String> createJCDStationName(String value) {
-        return new JAXBElement<String>(_StepName_QNAME, String.class, JCDStation.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Position }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link Position }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "position", scope = JCDStation.class)
-    public JAXBElement<Position> createJCDStationPosition(Position value) {
-        return new JAXBElement<Position>(_JCDStationPosition_QNAME, Position.class, JCDStation.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfFeature }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfFeature }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "features", scope = GeoLoca.class)
-    public JAXBElement<ArrayOfFeature> createGeoLocaFeatures(ArrayOfFeature value) {
-        return new JAXBElement<ArrayOfFeature>(_GeoLocaFeatures_QNAME, ArrayOfFeature.class, GeoLoca.class, value);
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/RoutingServer", name = "features", scope = Itinary.class)
+    public JAXBElement<ArrayOfFeatureItinary> createItinaryFeatures(ArrayOfFeatureItinary value) {
+        return new JAXBElement<ArrayOfFeatureItinary>(_ItinaryFeatures_QNAME, ArrayOfFeatureItinary.class, Itinary.class, value);
     }
 
 }
