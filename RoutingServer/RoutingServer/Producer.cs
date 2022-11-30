@@ -34,7 +34,6 @@ namespace RoutingServer
             // Create a Producer targetting the selected queue.
             producer = session.CreateProducer(destination);
             producer.DeliveryMode = MsgDeliveryMode.NonPersistent;
-
         }
 
         public void sendMessage(string messageToSend)
