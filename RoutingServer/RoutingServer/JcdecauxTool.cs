@@ -65,7 +65,6 @@ namespace RoutingServer
         }
         public JCDStation GetNearestStation(GeoCoordinate stationCoordinates, List<JCDStation> stations)
         {
-
             JCDStation closestStation = stations[0];
             GeoCoordinate candidatePos = new GeoCoordinate(closestStation.position.latitude, closestStation.position.longitude);
 

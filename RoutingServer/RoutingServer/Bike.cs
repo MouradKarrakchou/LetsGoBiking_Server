@@ -19,6 +19,18 @@ namespace RoutingServer
 
         public Itinary GetItinerary(String origin, String destination)
         {
+            return (calculateItinerary(origin, destination));
+        }
+
+        public void putItineraryInQueue(String origin, String destination)
+        {
+            Itinary itinary = calculateItinerary(origin, destination);
+
+
+        }
+
+        private Itinary calculateItinerary(String origin, String destination)
+        {
             GeoLoca originGeoLoca = openStreetMapTool.GetPositionWithAdress(origin);
             GeoLoca destinationGeoLoca = openStreetMapTool.GetPositionWithAdress(destination);
 
