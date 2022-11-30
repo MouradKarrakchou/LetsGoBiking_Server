@@ -5,7 +5,10 @@ using System.Linq;
 using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
-
+using Apache.NMS;
+using Apache.NMS.ActiveMQ;
+using ISession = Apache.NMS.ISession;
+using IConnection = Apache.NMS.IConnection;
 
 namespace RoutingServer
 {
@@ -13,7 +16,7 @@ namespace RoutingServer
     {
         Uri connecturi;
         ConnectionFactory connectionFactory;
-        Connection connection;
+        IConnection connection;
         ISession session;
         IDestination destination;
         IMessageProducer producer;
@@ -34,9 +37,9 @@ namespace RoutingServer
 
         }
 
-        public void sendMessage(string message)
+        public void sendMessage(string messageToSend)
         {
-            ITextMessage message = session.CreateTextMessage(message);
+            ITextMessage message = session.CreateTextMessage(messageToSend);
             producer.Send(message);
         }
 
