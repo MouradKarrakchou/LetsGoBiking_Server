@@ -37,24 +37,48 @@ namespace RoutingServer
 
         public Itinary createItinary(GeoCoordinate geoCoordinate1, GeoCoordinate geoCoordinate2, GeoCoordinate geoCoordinate3, GeoCoordinate geoCoordinate4)
         {
-            string url = "https://api.openrouteservice.org/v2/directions/driving-car/geojson";
+            string urlOnFoot = "https://api.openrouteservice.org/v2/directions/foot-walking/geojson";
+
+            List<Itinary> itinaries = GenerateItinaries(geoCoordinate1, geoCoordinate2, geoCoordinate3, geoCoordinate4);
+
+            Itinary completeItinary = new Itinary();
+            foreach (Itinary itinary in itinaries)
+            {
+                completeItinary.addItinary(itinary);
+            }
+            Itinary straightItinary = GetItinaryFrom2Point(geoCoordinate1, geoCoordinate4, urlOnFoot);
+            double a = completeItinary.calculateDuration();
+            double b = straightItinary.calculateDuration();
+            if (completeItinary.calculateDuration() <= straightItinary.calculateDuration()) return completeItinary;
+            else return straightItinary;
+        }
+
+        public List<Itinary> GenerateItinaries(GeoCoordinate geoCoordinate1, GeoCoordinate geoCoordinate2, GeoCoordinate geoCoordinate3, GeoCoordinate geoCoordinate4)
+        {
+            string urlOnBycicle = "https://api.openrouteservice.org/v2/directions/cycling-regular/geojson";
+            string urlOnFoot = "https://api.openrouteservice.org/v2/directions/foot-walking/geojson";
+
+            List<Itinary> itinaries = new List<Itinary>();
+            itinaries.Add(GetItinaryFrom2Point(geoCoordinate1, geoCoordinate2, urlOnFoot));
+            itinaries.Add(GetItinaryFrom2Point(geoCoordinate2, geoCoordinate3, urlOnBycicle));
+            itinaries.Add(GetItinaryFrom2Point(geoCoordinate3, geoCoordinate4, urlOnFoot));
+
+
+            return (itinaries);
+        }
+        public Itinary GetItinaryFrom2Point(GeoCoordinate geoCoordinate1,GeoCoordinate geoCoordinate2, string url)
+        {
+
             query = "api_key=" + apiKey;
             //POST REQUEST
             Geojson geojson = new Geojson();
+            List<Task<string>> results = new List<Task<string>>();
             geojson.addCoordonate(geoCoordinate1);
             geojson.addCoordonate(geoCoordinate2);
-            geojson.addCoordonate(geoCoordinate3);
-            geojson.addCoordonate(geoCoordinate4);
             string postBody = JsonConvert.SerializeObject(geojson);
-            Console.WriteLine(postBody);
-            
-            Task<string>  result = DirectionsServicePOST(url, query, new StringContent(postBody, Encoding.UTF8, "application/json"));
+            Task<String> result=DirectionsServicePOST(url, query, new StringContent(postBody, Encoding.UTF8, "application/json"));
             string jsonResult = result.Result;
-            Console.WriteLine(jsonResult);
-            Itinary itinary = JsonConvert.DeserializeObject<Itinary>(jsonResult);
-
-            return(itinary);
-
+            return(JsonConvert.DeserializeObject<Itinary>(jsonResult));
         }
 
         static async Task<string> DirectionsServicePOST(string url, string query, HttpContent body)
@@ -86,17 +110,40 @@ namespace RoutingServer
     public class Itinary
     {
         public List<FeatureItinary> features { get; set; }
+        public Itinary()
+        {
+            features = new List<FeatureItinary>();
+        }
+        public void addItinary(Itinary itinary)
+        {
+            this.features.AddRange(itinary.features);
+        }
+
+        public double calculateDuration()
+        {
+            double time = 0;
+            foreach(FeatureItinary feature in features)
+            {
+                time += feature.calculateDuration();
+            }
+            return (time);
+        }
     }
 
     public class FeatureItinary
     {
         public GeometryItinary geometry { get; set; }
         public Properties properties { get; set; }
+        public double calculateDuration()
+        {
+            return (properties.calculateDuration());
+        }
     }
     public class Feature
     {
         public Geometry geometry { get; set; }
         public Properties properties { get; set; }
+
     }
     public class Geometry
     {
@@ -112,12 +159,23 @@ namespace RoutingServer
         public string locality { get; set; }
         public List<Segment> segments { get; set; }
 
+        public double calculateDuration()
+        {
+            double time = 0;
+            foreach (Segment segment in segments)
+            {
+                time += segment.duration;
+            }
+            return (time);
+        }
+
     }
     public class Segment
     {
         public double distance { get; set; }
         public double duration { get; set; }
         public List<Step> steps { get; set; }
+
     }
     public class Step
     {
