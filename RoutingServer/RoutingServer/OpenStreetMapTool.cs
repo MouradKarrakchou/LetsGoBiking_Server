@@ -47,8 +47,6 @@ namespace RoutingServer
                 completeItinary.addItinary(itinary);
             }
             Itinary straightItinary = GetItinaryFrom2Point(geoCoordinate1, geoCoordinate4, urlOnFoot);
-            double a = completeItinary.calculateDuration();
-            double b = straightItinary.calculateDuration();
             if (completeItinary.calculateDuration() <= straightItinary.calculateDuration()) return completeItinary;
             else return straightItinary;
         }

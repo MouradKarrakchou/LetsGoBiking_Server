@@ -36,3 +36,47 @@ D:\Polytech\SI4\S7\MiddleWare\Projet\RoutingServer\RoutingServer\bin\Debug\Syste
 D:\Polytech\SI4\S7\MiddleWare\Projet\RoutingServer\RoutingServer\bin\Debug\System.ValueTuple.xml
 D:\Polytech\SI4\S7\MiddleWare\Projet\RoutingServer\RoutingServer\obj\Debug\RoutingServer.csproj.CopyComplete
 D:\Polytech\SI4\S7\MiddleWare\Projet\RoutingServer\RoutingServer\obj\Debug\XsdGeneratedCode\GeneratedXsdTypes.cs
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\RoutingServer.dll.config
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\RoutingServer.dll
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\RoutingServer.pdb
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\Apache.NMS.ActiveMQ.dll
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\Apache.NMS.dll
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\Elasticsearch.Net.dll
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\Nest.dll
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\Nest.JsonNetSerializer.dll
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\System.Buffers.dll
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\System.Memory.dll
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\System.Text.Json.dll
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\System.ValueTuple.dll
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\Elasticsearch.Net.pdb
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\Elasticsearch.Net.xml
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\ICSharpCode.SharpZipLib.pdb
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\ICSharpCode.SharpZipLib.xml
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\Nest.pdb
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\Nest.xml
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\Nest.JsonNetSerializer.pdb
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\Nest.JsonNetSerializer.xml
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\System.Buffers.xml
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\System.Memory.xml
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\bin\Debug\System.ValueTuple.xml
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\obj\Debug\RoutingServer.csproj.AssemblyReference.cache
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\obj\Debug\RoutingServer.csproj.CoreCompileInputs.cache
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\obj\Debug\XsdGeneratedCode\GeneratedXsdTypes.cs
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\obj\Debug\RoutingServer.csproj.CopyComplete
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\obj\Debug\RoutingServer.dll
+C:\Users\moura\OneDrive\Bureau\SI4\Service_oriented_computing\Bike well designed\Bike\RoutingServer\RoutingServer\obj\Debug\RoutingServer.pdb
