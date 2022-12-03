@@ -57,6 +57,7 @@ namespace RoutingServer
         public JCDStation GetNearestStation(GeoLoca coord)
         {
             List<JCDStation> list = new List<JCDStation>();
+            if (coord.getCity() == null) throw new Exception("Pas de locality");
             return jcdecauxTool.GetNearestStation(coord.getGeoCoord(), coord.getCity());
         }
 

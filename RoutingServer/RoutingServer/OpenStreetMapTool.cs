@@ -9,6 +9,7 @@ using System.Device.Location;
 using Nest;
 using GeoCoordinate = System.Device.Location.GeoCoordinate;
 using Newtonsoft.Json.Linq;
+using System.Web;
 
 namespace RoutingServer
 {
@@ -19,9 +20,10 @@ namespace RoutingServer
 
         public GeoLoca GetPositionWithAdress(string adress)
         {
+            adress = Uri.EscapeUriString(adress);
             query = "api_key=" + apiKey;
             query = query + "&" + "text=" + adress;
-            url = "https://api.openrouteservice.org/geocode/autocomplete";
+            url = "https://api.openrouteservice.org/geocode/search";
             response = GeoCodeApiCall(url, query).Result;
             GeoLoca geoLocalisationDetails = JsonConvert.DeserializeObject<GeoLoca>(response);
             return (geoLocalisationDetails);
