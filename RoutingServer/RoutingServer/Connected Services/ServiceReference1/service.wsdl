@@ -5,6 +5,7 @@
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/ProxyCache" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IProxy_getAllContracts_InputMessage">
@@ -19,6 +20,12 @@
   <wsdl:message name="IProxy_getStations_OutputMessage">
     <wsdl:part name="parameters" element="tns:getStationsResponse" />
   </wsdl:message>
+  <wsdl:message name="IProxy_getContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:getContract" />
+  </wsdl:message>
+  <wsdl:message name="IProxy_getContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getContractResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProxy">
     <wsdl:operation name="getAllContracts">
       <wsdl:input wsaw:Action="http://tempuri.org/IProxy/getAllContracts" message="tns:IProxy_getAllContracts_InputMessage" />
@@ -27,6 +34,10 @@
     <wsdl:operation name="getStations">
       <wsdl:input wsaw:Action="http://tempuri.org/IProxy/getStations" message="tns:IProxy_getStations_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProxy/getStationsResponse" message="tns:IProxy_getStations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProxy/getContract" message="tns:IProxy_getContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProxy/getContractResponse" message="tns:IProxy_getContract_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IProxy" type="tns:IProxy">
@@ -42,6 +53,15 @@
     </wsdl:operation>
     <wsdl:operation name="getStations">
       <soap:operation soapAction="http://tempuri.org/IProxy/getStations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContract">
+      <soap:operation soapAction="http://tempuri.org/IProxy/getContract" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

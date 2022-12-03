@@ -117,6 +117,7 @@
     <Compile Include="IBikeService.cs" />
     <Compile Include="JcdecauxTool.cs" />
     <Compile Include="Main1.cs" />
+    <Compile Include="NoContractFoundException.cs" />
     <Compile Include="OpenStreetMapTool.cs" />
     <Compile Include="Producer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,6 +125,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Connected Services\ServiceReference1\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceReference1\ProxyCache.xsd">
       <SubType>Designer</SubType>
     </None>

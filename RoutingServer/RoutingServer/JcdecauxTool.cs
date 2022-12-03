@@ -12,6 +12,7 @@ using System.Device.Location;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using RoutingServer.ServiceReference1;
+using System.Diagnostics.Contracts;
 //
 namespace RoutingServer
 {
@@ -19,6 +20,8 @@ namespace RoutingServer
     {
         public string apiKey= "3aff999b9fe29460c5a8b1a3ca8d551d5a60eda7";
         string query, url, response;
+        ProxyClient proxyClient = new ProxyClient();
+
 
         public JcdecauxTool()
         {
@@ -40,13 +43,11 @@ namespace RoutingServer
 
         public List<JCDContract> getAllContracts()
         {
-            ProxyClient proxyClient = new ProxyClient();
             JCDContract[] jCDContracts = proxyClient.getAllContracts();
             return (jCDContracts.ToList()) ;
         }
         public List<JCDStation> getStations(string contract)
         {
-            ProxyClient proxyClient = new ProxyClient();
             JCDStation[] jCDStations = proxyClient.getStations(contract);
             return (jCDStations.ToList());
         }
@@ -108,7 +109,14 @@ namespace RoutingServer
         }
         public JCDStation GetNearestStation(GeoCoordinate coord, string cityName)
         {
-            return GetNearestStation(coord, getStations(cityName));
+            JCDContract contract = getContractsOfCity(cityName);
+            if (contract == null) throw new NoContractFoundException();
+            else return GetNearestStation(coord, getStations(contract.name));
+        }
+
+        private JCDContract getContractsOfCity(string cityName)
+        {
+           return proxyClient.getContract(cityName);
         }
 
         static string JCDecauxAPICall(string url, string query)

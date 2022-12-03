@@ -23,6 +23,9 @@ namespace RoutingServer.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] citiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string nameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -32,6 +35,19 @@ namespace RoutingServer.ServiceReference1 {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] cities {
+            get {
+                return this.citiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.citiesField, value) != true)) {
+                    this.citiesField = value;
+                    this.RaisePropertyChanged("cities");
+                }
             }
         }
         
@@ -211,6 +227,12 @@ namespace RoutingServer.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProxy/getStations", ReplyAction="http://tempuri.org/IProxy/getStationsResponse")]
         System.Threading.Tasks.Task<RoutingServer.ServiceReference1.JCDStation[]> getStationsAsync(string contract);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProxy/getContract", ReplyAction="http://tempuri.org/IProxy/getContractResponse")]
+        RoutingServer.ServiceReference1.JCDContract getContract(string cityName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProxy/getContract", ReplyAction="http://tempuri.org/IProxy/getContractResponse")]
+        System.Threading.Tasks.Task<RoutingServer.ServiceReference1.JCDContract> getContractAsync(string cityName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -254,6 +276,14 @@ namespace RoutingServer.ServiceReference1 {
         
         public System.Threading.Tasks.Task<RoutingServer.ServiceReference1.JCDStation[]> getStationsAsync(string contract) {
             return base.Channel.getStationsAsync(contract);
+        }
+        
+        public RoutingServer.ServiceReference1.JCDContract getContract(string cityName) {
+            return base.Channel.getContract(cityName);
+        }
+        
+        public System.Threading.Tasks.Task<RoutingServer.ServiceReference1.JCDContract> getContractAsync(string cityName) {
+            return base.Channel.getContractAsync(cityName);
         }
     }
 }

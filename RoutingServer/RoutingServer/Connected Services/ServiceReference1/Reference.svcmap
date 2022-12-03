@@ -26,6 +26,7 @@
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="6054f4ac-a753-4a1a-bdeb-87ad1953a8ca" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/Proxy/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="3fa0db4d-3ee9-445e-88e0-55323ade2579" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/Proxy/mex" />
     <MetadataFile FileName="ProxyCache.xsd" MetadataType="Schema" ID="81a01a02-d0e9-4490-a6eb-1cca5eced652" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/Proxy/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="25bd2d80-0bcd-4fe4-bf59-3cfc5ce8fcaf" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/Proxy/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
