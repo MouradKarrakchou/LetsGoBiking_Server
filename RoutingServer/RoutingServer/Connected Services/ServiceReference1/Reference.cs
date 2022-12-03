@@ -84,6 +84,12 @@ namespace RoutingServer.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string contractNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RoutingServer.ServiceReference1.MainStands mainStandsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string nameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -99,6 +105,32 @@ namespace RoutingServer.ServiceReference1 {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string contractName {
+            get {
+                return this.contractNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.contractNameField, value) != true)) {
+                    this.contractNameField = value;
+                    this.RaisePropertyChanged("contractName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RoutingServer.ServiceReference1.MainStands mainStands {
+            get {
+                return this.mainStandsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.mainStandsField, value) != true)) {
+                    this.mainStandsField = value;
+                    this.RaisePropertyChanged("mainStands");
+                }
             }
         }
         
@@ -137,6 +169,51 @@ namespace RoutingServer.ServiceReference1 {
                 if ((object.ReferenceEquals(this.positionField, value) != true)) {
                     this.positionField = value;
                     this.RaisePropertyChanged("position");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MainStands", Namespace="http://schemas.datacontract.org/2004/07/ProxyCache")]
+    [System.SerializableAttribute()]
+    public partial class MainStands : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RoutingServer.ServiceReference1.Availabilities availabilitiesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RoutingServer.ServiceReference1.Availabilities availabilities {
+            get {
+                return this.availabilitiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.availabilitiesField, value) != true)) {
+                    this.availabilitiesField = value;
+                    this.RaisePropertyChanged("availabilities");
                 }
             }
         }
@@ -198,6 +275,67 @@ namespace RoutingServer.ServiceReference1 {
                 if ((this.longitudeField.Equals(value) != true)) {
                     this.longitudeField = value;
                     this.RaisePropertyChanged("longitude");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Availabilities", Namespace="http://schemas.datacontract.org/2004/07/ProxyCache")]
+    [System.SerializableAttribute()]
+    public partial class Availabilities : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int bikesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int standsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int bikes {
+            get {
+                return this.bikesField;
+            }
+            set {
+                if ((this.bikesField.Equals(value) != true)) {
+                    this.bikesField = value;
+                    this.RaisePropertyChanged("bikes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int stands {
+            get {
+                return this.standsField;
+            }
+            set {
+                if ((this.standsField.Equals(value) != true)) {
+                    this.standsField = value;
+                    this.RaisePropertyChanged("stands");
                 }
             }
         }

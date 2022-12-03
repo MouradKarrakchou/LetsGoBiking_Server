@@ -21,6 +21,9 @@ namespace RoutingServer
         public string apiKey= "3aff999b9fe29460c5a8b1a3ca8d551d5a60eda7";
         string query, url, response;
         ProxyClient proxyClient = new ProxyClient();
+        int nbMinOfBike = 1;
+        int nbMinOfStand = 1;
+
 
 
         public JcdecauxTool()
@@ -107,11 +110,42 @@ namespace RoutingServer
             }
             return (closestStation);
         }
-        public JCDStation GetNearestStation(GeoCoordinate coord, string cityName)
+        public JCDStation GetNearestStation(GeoCoordinate coord, string cityName, Boolean takeABike, Boolean leaveABike)
         {
             JCDContract contract = getContractsOfCity(cityName);
             if (contract == null) throw new NoContractFoundException();
-            else return GetNearestStation(coord, getStations(contract.name));
+
+            List<JCDStation> stations = getStations(contract.name);
+            if (takeABike) {
+                stations = removeStationWithNoBike(stations);
+            }
+            if (leaveABike)
+            {
+                stations = removeStationWithNoStand(stations);
+            }
+            if (stations.Count == 0) return null;
+            return GetNearestStation(coord, stations);
+        }
+
+        private List<JCDStation> removeStationWithNoStand(List<JCDStation> stations)
+        {
+            List<JCDStation> stationsWithStand = new List<JCDStation>();
+            foreach (JCDStation station in stations)
+            {
+                if (station.mainStands.availabilities.stands > nbMinOfStand)
+                    stationsWithStand.Add(station);
+            }
+            return stationsWithStand;
+        }
+
+        private List<JCDStation> removeStationWithNoBike(List<JCDStation> stations)
+        {
+            List<JCDStation>  stationsWithBike = new List<JCDStation>();
+            foreach (JCDStation station in stations) { 
+                if(station.mainStands.availabilities.bikes >= nbMinOfBike)
+                    stationsWithBike.Add(station);
+            }
+            return stationsWithBike;
         }
 
         private JCDContract getContractsOfCity(string cityName)

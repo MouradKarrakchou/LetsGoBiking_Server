@@ -22,12 +22,27 @@
   <xs:element name="ArrayOfJCDStation" nillable="true" type="tns:ArrayOfJCDStation" />
   <xs:complexType name="JCDStation">
     <xs:sequence>
+      <xs:element minOccurs="0" name="contractName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="mainStands" nillable="true" type="tns:MainStands" />
       <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="number" type="xs:int" />
       <xs:element minOccurs="0" name="position" nillable="true" type="tns:Position" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="JCDStation" nillable="true" type="tns:JCDStation" />
+  <xs:complexType name="MainStands">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="availabilities" nillable="true" type="tns:Availabilities" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MainStands" nillable="true" type="tns:MainStands" />
+  <xs:complexType name="Availabilities">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bikes" type="xs:int" />
+      <xs:element minOccurs="0" name="stands" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Availabilities" nillable="true" type="tns:Availabilities" />
   <xs:complexType name="Position">
     <xs:sequence>
       <xs:element minOccurs="0" name="latitude" type="xs:double" />

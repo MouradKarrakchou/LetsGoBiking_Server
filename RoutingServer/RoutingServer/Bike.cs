@@ -23,9 +23,14 @@ namespace RoutingServer
             {
                 return calculateItinerary(origin, destination);
             }
-            catch (NoContractFoundException) {
-                return null;
+            catch (NoContractFoundException e) {
+                Console.WriteLine(e);
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return null;
         }
 
         public void putItineraryInQueue(String origin, String destination)
@@ -38,9 +43,11 @@ namespace RoutingServer
             GeoLoca originGeoLoca = openStreetMapTool.GetPositionWithAdress(origin);
             GeoLoca destinationGeoLoca = openStreetMapTool.GetPositionWithAdress(destination);
 
-            JCDStation originStation = GetNearestStation(originGeoLoca);
-            JCDStation destinationStation = GetNearestStation(destinationGeoLoca);
+            JCDStation originStation = GetNearestStation(originGeoLoca, true, false);
+            JCDStation destinationStation = GetNearestStation(destinationGeoLoca, false, true);
 
+            if (originStation==null || destinationStation == null) throw new Exception("No stations found");
+            if (originStation.contractName != destinationStation.contractName) throw new Exception("The originStation and the destinationStation are not under the same contract");
             return CreateItinary(originGeoLoca, originStation, destinationStation, destinationGeoLoca);
         }
 
@@ -54,11 +61,11 @@ namespace RoutingServer
             return new GeoCoordinate(station.position.latitude, station.position.longitude);
         }
 
-        public JCDStation GetNearestStation(GeoLoca coord)
+        public JCDStation GetNearestStation(GeoLoca coord, Boolean takeABike, Boolean leaveABike)
         {
             List<JCDStation> list = new List<JCDStation>();
-            if (coord.getCity() == null) throw new Exception("Pas de locality");
-            return jcdecauxTool.GetNearestStation(coord.getGeoCoord(), coord.getCity());
+            if (coord.getCity() == null) throw new Exception("No locality in the features, causes of other sources than openstreet-route");
+            return jcdecauxTool.GetNearestStation(coord.getGeoCoord(), coord.getCity(), takeABike, leaveABike);
         }
 
     }
