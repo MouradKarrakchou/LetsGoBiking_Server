@@ -21,8 +21,8 @@ namespace RoutingServer
         public string apiKey= "3aff999b9fe29460c5a8b1a3ca8d551d5a60eda7";
         string query, url, response;
         ProxyClient proxyClient = new ProxyClient();
-        int nbMinOfBike = 1;
-        int nbMinOfStand = 1;
+        public static int nbMinOfBike = 1;
+        public static int nbMinOfStand = 1;
 
 
 
@@ -159,6 +159,14 @@ namespace RoutingServer
             JCDContract contract = getContractsOfCity(city);
             if (contract == null) throw new Exception("No contract found");
             return getStations(contract.name);
+        }
+
+        internal JCDStation getStationUsingStation(JCDStation destinationStation, List<JCDStation> stations)
+        {
+            foreach (JCDStation station in stations) { 
+                if(station.name == destinationStation.name) return station;
+            }
+            return null;
         }
     }
 }

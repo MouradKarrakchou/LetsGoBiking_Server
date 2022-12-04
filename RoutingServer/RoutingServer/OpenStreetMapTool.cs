@@ -17,6 +17,8 @@ namespace RoutingServer
     {
         string apiKey = "5b3ce3597851110001cf6248b0f9aba6d4384d7195f01c6be0f71578";
         string query, url, response;
+        public static string urlOnBycicle = "https://api.openrouteservice.org/v2/directions/cycling-regular/geojson";
+        public static string urlOnFoot = "https://api.openrouteservice.org/v2/directions/foot-walking/geojson";
 
         public GeoLoca GetPositionWithAdress(string adress)
         {
@@ -57,15 +59,10 @@ namespace RoutingServer
 
         public List<Itinary> GenerateItinaries(GeoCoordinate geoCoordinate1, GeoCoordinate geoCoordinate2, GeoCoordinate geoCoordinate3, GeoCoordinate geoCoordinate4)
         {
-            string urlOnBycicle = "https://api.openrouteservice.org/v2/directions/cycling-regular/geojson";
-            string urlOnFoot = "https://api.openrouteservice.org/v2/directions/foot-walking/geojson";
-
             List<Itinary> itinaries = new List<Itinary>();
             itinaries.Add(GetItinaryFrom2Point(geoCoordinate1, geoCoordinate2, urlOnFoot, true));
             itinaries.Add(GetItinaryFrom2Point(geoCoordinate2, geoCoordinate3, urlOnBycicle, false));
             itinaries.Add(GetItinaryFrom2Point(geoCoordinate3, geoCoordinate4, urlOnFoot, true));
-
-
             return (itinaries);
         }
         public Itinary GetItinaryFrom2Point(GeoCoordinate geoCoordinate1,GeoCoordinate geoCoordinate2, string url, Boolean onFoot)
