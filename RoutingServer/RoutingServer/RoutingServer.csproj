@@ -114,10 +114,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="DataContainer.cs" />
     <Compile Include="IBikeService.cs" />
     <Compile Include="JcdecauxTool.cs" />
     <Compile Include="Main1.cs" />
-    <Compile Include="NoContractFoundException.cs" />
     <Compile Include="OpenStreetMapTool.cs" />
     <Compile Include="Producer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

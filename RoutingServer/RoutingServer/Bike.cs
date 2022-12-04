@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Device.Location;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using Apache.NMS.ActiveMQ.Commands;
+using Newtonsoft.Json;
 using RoutingServer.ServiceReference1;
 
 
@@ -16,26 +19,34 @@ namespace RoutingServer
 
         JcdecauxTool jcdecauxTool = new JcdecauxTool();
         OpenStreetMapTool openStreetMapTool = new OpenStreetMapTool();
+        Producer producer = new Producer();
 
-        public Itinary GetItinerary(String origin, String destination)
+        public Itinary GetItinerary(string origin, string destination)
         {
+            return calculateItinerary(origin, destination);
+        }
+
+        public DataContainer GetDataContainer(String origin, String destination)
+        {
+            DataContainer data = new DataContainer();
             try
             {
-                return calculateItinerary(origin, destination);
-            }
-            catch (NoContractFoundException e) {
-                Console.WriteLine(e);
+                Itinary itinary = GetItinerary(origin, destination);
+                data.itinary = itinary;
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                data.exception = e.Message;
             }
-            return null;
+            return data;
         }
-
-        public void putItineraryInQueue(String origin, String destination)
+        public void PutDataContainerInQueue(String origin, String destination)
         {
-            Itinary itinary = calculateItinerary(origin, destination);
+            DataContainer data = GetDataContainer(origin, destination);
+            StringWriter strWriter = new StringWriter();
+            JsonSerializer jsonSerializer = new JsonSerializer();
+            jsonSerializer.Serialize(strWriter, data);
+            producer.sendMessage(strWriter.ToString());
         }
 
         private Itinary calculateItinerary(String origin, String destination)
@@ -46,11 +57,11 @@ namespace RoutingServer
             JCDStation originStation = GetNearestStation(originGeoLoca, true, false);
             JCDStation destinationStation = GetNearestStation(destinationGeoLoca, false, true);
 
-            if (originStation==null || destinationStation == null) throw new Exception("No stations found");
-            if (originStation.contractName != destinationStation.contractName) throw new Exception("The originStation and the destinationStation are not under the same contract");
+            if (originStation==null || destinationStation == null) throw new Exception("No station found");
+            if (originStation.contractName != destinationStation.contractName) throw new Exception("The two station choosen are not in the same contract");
             return CreateItinary(originGeoLoca, originStation, destinationStation, destinationGeoLoca);
         }
-
+        
         public Itinary CreateItinary(GeoLoca originGeoLoca, JCDStation originStation, JCDStation destinationStation, GeoLoca destinationGeoLoca)
         {
 
@@ -67,6 +78,7 @@ namespace RoutingServer
             if (coord.getCity() == null) throw new Exception("No locality in the features, causes of other sources than openstreet-route");
             return jcdecauxTool.GetNearestStation(coord.getGeoCoord(), coord.getCity(), takeABike, leaveABike);
         }
+
 
     }
 }

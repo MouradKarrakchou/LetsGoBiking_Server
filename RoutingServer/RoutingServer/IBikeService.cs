@@ -14,6 +14,11 @@ namespace RoutingServer
     {
         [OperationContract]
         Itinary GetItinerary(String origin, String destination);
+        [OperationContract]
+        DataContainer GetDataContainer(String origin, String destination);
+        [OperationContract]
+        void PutDataContainerInQueue(String origin, String destination);
+
     }
 
     // Utilisez un contrat de données comme indiqué dans l'exemple ci-après pour ajouter les types composites aux opérations de service.

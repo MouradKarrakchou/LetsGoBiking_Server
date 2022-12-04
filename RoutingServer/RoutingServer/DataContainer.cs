@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace RoutingServer
 {
-    internal class NoContractFoundException : Exception
+
+    public class DataContainer
     {
+        public Itinary itinary { get; set; }
+        public String exception { get; set; }
     }
 }

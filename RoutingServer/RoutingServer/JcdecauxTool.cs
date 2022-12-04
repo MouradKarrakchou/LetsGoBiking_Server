@@ -113,7 +113,7 @@ namespace RoutingServer
         public JCDStation GetNearestStation(GeoCoordinate coord, string cityName, Boolean takeABike, Boolean leaveABike)
         {
             JCDContract contract = getContractsOfCity(cityName);
-            if (contract == null) throw new NoContractFoundException();
+            if (contract == null) throw new Exception("No contract found");
 
             List<JCDStation> stations = getStations(contract.name);
             if (takeABike) {
