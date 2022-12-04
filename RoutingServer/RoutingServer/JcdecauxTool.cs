@@ -110,12 +110,8 @@ namespace RoutingServer
             }
             return (closestStation);
         }
-        public JCDStation GetNearestStation(GeoCoordinate coord, string cityName, Boolean takeABike, Boolean leaveABike)
+        public JCDStation GetNearestStation(GeoCoordinate coord, List<JCDStation> stations, Boolean takeABike, Boolean leaveABike)
         {
-            JCDContract contract = getContractsOfCity(cityName);
-            if (contract == null) throw new Exception("No contract found");
-
-            List<JCDStation> stations = getStations(contract.name);
             if (takeABike) {
                 stations = removeStationWithNoBike(stations);
             }
@@ -148,7 +144,7 @@ namespace RoutingServer
             return stationsWithBike;
         }
 
-        private JCDContract getContractsOfCity(string cityName)
+        public JCDContract getContractsOfCity(string cityName)
         {
            return proxyClient.getContract(cityName);
         }
@@ -157,6 +153,12 @@ namespace RoutingServer
         {
             return (url + "?" + query);
         }
-       
+
+        public  List<JCDStation> getStationsUsingCity(String city)
+        {
+            JCDContract contract = getContractsOfCity(city);
+            if (contract == null) throw new Exception("No contract found");
+            return getStations(contract.name);
+        }
     }
 }

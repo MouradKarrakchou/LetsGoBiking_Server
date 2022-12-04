@@ -9,7 +9,7 @@ namespace RoutingServer
 
     public class DataContainer
     {
-        public Itinary itinary { get; set; }
+        public List<Itinary> itinary { get; set; }
         public String exception { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace RoutingServer
         OpenStreetMapTool openStreetMapTool = new OpenStreetMapTool();
         Producer producer = new Producer();
 
-        public Itinary GetItinerary(string origin, string destination)
+        public List<Itinary> GetItinerary(string origin, string destination)
         {
             return calculateItinerary(origin, destination);
         }
@@ -31,7 +31,7 @@ namespace RoutingServer
             DataContainer data = new DataContainer();
             try
             {
-                Itinary itinary = GetItinerary(origin, destination);
+                List<Itinary> itinary = GetItinerary(origin, destination);
                 data.itinary = itinary;
             }
             catch (Exception e)
@@ -49,20 +49,22 @@ namespace RoutingServer
             producer.sendMessage(strWriter.ToString());
         }
 
-        private Itinary calculateItinerary(String origin, String destination)
+        private List<Itinary> calculateItinerary(String origin, String destination)
         {
             GeoLoca originGeoLoca = openStreetMapTool.GetPositionWithAdress(origin);
             GeoLoca destinationGeoLoca = openStreetMapTool.GetPositionWithAdress(destination);
+                       
+            List<JCDStation> stationsOfContract = jcdecauxTool.getStationsUsingCity(originGeoLoca.getCity());
 
-            JCDStation originStation = GetNearestStation(originGeoLoca, true, false);
-            JCDStation destinationStation = GetNearestStation(destinationGeoLoca, false, true);
+            JCDStation originStation = GetNearestStation(originGeoLoca, stationsOfContract, true, false);
+            JCDStation destinationStation = GetNearestStation(destinationGeoLoca, stationsOfContract, false, true);
 
             if (originStation==null || destinationStation == null) throw new Exception("No station found");
             if (originStation.contractName != destinationStation.contractName) throw new Exception("The two station choosen are not in the same contract");
             return CreateItinary(originGeoLoca, originStation, destinationStation, destinationGeoLoca);
         }
-        
-        public Itinary CreateItinary(GeoLoca originGeoLoca, JCDStation originStation, JCDStation destinationStation, GeoLoca destinationGeoLoca)
+
+        public List<Itinary> CreateItinary(GeoLoca originGeoLoca, JCDStation originStation, JCDStation destinationStation, GeoLoca destinationGeoLoca)
         {
 
             return openStreetMapTool.createItinary(originGeoLoca.getGeoCoord(), getGeoCoord(originStation), getGeoCoord(destinationStation), destinationGeoLoca.getGeoCoord());
@@ -72,11 +74,10 @@ namespace RoutingServer
             return new GeoCoordinate(station.position.latitude, station.position.longitude);
         }
 
-        public JCDStation GetNearestStation(GeoLoca coord, Boolean takeABike, Boolean leaveABike)
+        public JCDStation GetNearestStation(GeoLoca coord, List<JCDStation> stations, Boolean takeABike, Boolean leaveABike)
         {
-            List<JCDStation> list = new List<JCDStation>();
             if (coord.getCity() == null) throw new Exception("No locality in the features, causes of other sources than openstreet-route");
-            return jcdecauxTool.GetNearestStation(coord.getGeoCoord(), coord.getCity(), takeABike, leaveABike);
+            return jcdecauxTool.GetNearestStation(coord.getGeoCoord(), stations, takeABike, leaveABike);
         }
 
 
