@@ -123,12 +123,12 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActiveMqResponse.cs" />
     <Compile Include="Connected Services\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="DataContainer.cs" />
     <Compile Include="IBikeService.cs" />
     <Compile Include="JcdecauxTool.cs" />
     <Compile Include="Main1.cs" />
