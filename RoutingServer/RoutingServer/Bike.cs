@@ -79,7 +79,7 @@ namespace RoutingServer
         /// <summary>
         /// Return the entire itinary using origin and destination.
         /// If the parameter cityName is define the itinary will be based on this cityname
-        /// If it is define to "" the programme 
+        /// If it is define to "" the programme will use the city of the origin position as contract
         /// </summary>
         /// <param name="origin"></param>
         /// <param name="destination"></param>
@@ -110,22 +110,46 @@ namespace RoutingServer
             return userItinary;
         }
 
+        /// <summary>
+        /// use the openStreetMapTool to create a itinary
+        /// </summary>
+        /// <param name="originGeoLoca"></param>
+        /// <param name="originStation"></param>
+        /// <param name="destinationStation"></param>
+        /// <param name="destinationGeoLoca"></param>
+        /// <returns> a List of Itinary</returns>
         public List<Itinary> CreateItinary(GeoLoca originGeoLoca, JCDStation originStation, JCDStation destinationStation, GeoLoca destinationGeoLoca)
         {
 
             return openStreetMapTool.createItinary(originGeoLoca.getGeoCoord(), getGeoCoord(originStation), getGeoCoord(destinationStation), destinationGeoLoca.getGeoCoord());
         }
+        /// <summary>
+        /// Return GeoCoordinate of a station using latitude and longitude
+        /// </summary>
+        /// <param name="station"></param>
+        /// <returns></returns>
         internal GeoCoordinate getGeoCoord(JCDStation station)
         {
             return new GeoCoordinate(station.position.latitude, station.position.longitude);
         }
-
+        /// <summary>
+        /// Compute the nearest station from the coord parameter, the station need to have some bike or some slot to leave a bike (depending of takeABike and leaveABike parameter)
+        /// </summary>
+        /// <param name="coord"></param>
+        /// <param name="stations"></param>
+        /// <param name="takeABike"></param>
+        /// <param name="leaveABike"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public JCDStation GetNearestStation(GeoLoca coord, List<JCDStation> stations, Boolean takeABike, Boolean leaveABike)
         {
             if (coord.getCity() == null) throw new Exception("No locality in the features, causes of other sources than openstreet-route");
             return jcdecauxTool.GetNearestStation(coord.getGeoCoord(), stations, takeABike, leaveABike);
         }
 
+        /// <summary>
+        /// Update the content of the queue, if the itinary need to be updated, he will be updated
+        /// </summary>
         public void update() {
             if (userItinary.Count == 0) return;
             userItinary.Remove(userItinary[0]);
@@ -136,7 +160,12 @@ namespace RoutingServer
             addItinaryToTheQueue();
         }
 
-
+        /// <summary>
+        /// Return true of the the current destination station is no more eligible to be a the destination station
+        /// </summary>
+        /// <param name="stationsOfContract"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         private bool needUpdate(List<JCDStation> stationsOfContract)
         {
             JCDStation endStation = jcdecauxTool.getStationUsingStation(userDestinationStation, stationsOfContract);
@@ -144,7 +173,11 @@ namespace RoutingServer
             if (endStation.mainStands.availabilities.stands >= JcdecauxTool.nbMinOfStand) return false;
             return true;
         }
-
+        /// <summary>
+        /// Compute a new itinary station1 -> station2 -> destination
+        /// </summary>
+        /// <param name="stationsOfContract"></param>
+        /// <exception cref="Exception"></exception>
         public void updateItinary(List<JCDStation> stationsOfContract) {
             JCDStation destinationStation = GetNearestStation(userDestinationGeoLoca, stationsOfContract, false, true);
             if (destinationStation == null) throw new Exception("No station found");
@@ -153,6 +186,9 @@ namespace RoutingServer
             this.userItinary = new List<Itinary> { bicycleItinary , footItinary };
         }
 
+        /// <summary>
+        /// Add the nextItinary step into the queue
+        /// </summary>
         private void addItinaryToTheQueue()
         {
             //TODO FAIRE EN SORTE QUE ActiveMqResponse NE CONTIENNE QU'UN SEUL ITINARY
