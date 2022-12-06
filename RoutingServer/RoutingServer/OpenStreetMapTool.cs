@@ -20,6 +20,11 @@ namespace RoutingServer
         public static string urlOnBycicle = "https://api.openrouteservice.org/v2/directions/cycling-regular/geojson";
         public static string urlOnFoot = "https://api.openrouteservice.org/v2/directions/foot-walking/geojson";
 
+        /// <summary>
+        /// Return a GeoLoca using a string adress
+        /// </summary>
+        /// <param name="adress"></param>
+        /// <returns></returns>
         public GeoLoca GetPositionWithAdress(string adress)
         {
             adress = Uri.EscapeUriString(adress);
@@ -30,7 +35,12 @@ namespace RoutingServer
             GeoLoca geoLocalisationDetails = JsonConvert.DeserializeObject<GeoLoca>(response);
             return (geoLocalisationDetails);
         }
-
+        /// <summary>
+        /// Get GeoCode object using the openrouteservice API
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="query"></param>
+        /// <returns></returns>
         static async Task<string> GeoCodeApiCall(string url, string query)
         {
             HttpClient client = new HttpClient();
@@ -39,6 +49,14 @@ namespace RoutingServer
             return await response.Content.ReadAsStringAsync();
         }
 
+        /// <summary>
+        /// Return a itinary using 4 GeoCoordinate
+        /// </summary>
+        /// <param name="geoCoordinate1"></param>
+        /// <param name="geoCoordinate2"></param>
+        /// <param name="geoCoordinate3"></param>
+        /// <param name="geoCoordinate4"></param>
+        /// <returns></returns>
         public List<Itinary> createItinary(GeoCoordinate geoCoordinate1, GeoCoordinate geoCoordinate2, GeoCoordinate geoCoordinate3, GeoCoordinate geoCoordinate4)
         {
             string urlOnFoot = "https://api.openrouteservice.org/v2/directions/foot-walking/geojson";
@@ -56,7 +74,14 @@ namespace RoutingServer
             if (completeItinary.calculateDuration() <= straightItinary.calculateDuration()) return itinaries;
             else return new List<Itinary>() { straightItinary };
         }
-
+        /// <summary>
+        /// return a list of itinary using 4 GeoCoordinate and informations about means of transport
+        /// </summary>
+        /// <param name="geoCoordinate1"></param>
+        /// <param name="geoCoordinate2"></param>
+        /// <param name="geoCoordinate3"></param>
+        /// <param name="geoCoordinate4"></param>
+        /// <returns></returns>
         public List<Itinary> GenerateItinaries(GeoCoordinate geoCoordinate1, GeoCoordinate geoCoordinate2, GeoCoordinate geoCoordinate3, GeoCoordinate geoCoordinate4)
         {
             List<Itinary> itinaries = new List<Itinary>();
@@ -65,6 +90,15 @@ namespace RoutingServer
             itinaries.Add(GetItinaryFrom2Point(geoCoordinate3, geoCoordinate4, urlOnFoot, true));
             return (itinaries);
         }
+
+        /// <summary>
+        /// Return a itinary using 2 GeoCoordinate and informations about means of transport
+        /// </summary>
+        /// <param name="geoCoordinate1"></param>
+        /// <param name="geoCoordinate2"></param>
+        /// <param name="url"></param>
+        /// <param name="onFoot"></param>
+        /// <returns></returns>
         public Itinary GetItinaryFrom2Point(GeoCoordinate geoCoordinate1,GeoCoordinate geoCoordinate2, string url, Boolean onFoot)
         {
             query = "api_key=" + apiKey;
@@ -80,7 +114,13 @@ namespace RoutingServer
             itinary.onFoot = onFoot;
             return itinary;
         }
-
+        /// <summary>
+        /// Make a request to get a json of Itinary
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="query"></param>
+        /// <param name="body"></param>
+        /// <returns></returns>
         static async Task<string> DirectionsServicePOST(string url, string query, HttpContent body)
         {
             HttpClient client = new HttpClient();
