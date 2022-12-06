@@ -18,6 +18,8 @@ namespace RoutingServer
         DataContainer GetDataContainer(String origin, String destination, string cityName);
         [OperationContract]
         void PutDataContainerInQueue(String origin, String destination, string cityName);
+        [OperationContract]
+        void update()
 
     }
 
