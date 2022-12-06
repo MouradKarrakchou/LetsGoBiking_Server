@@ -96,11 +96,11 @@ namespace RoutingServer
         }
 
         public void update() {
+            if (userItinary.Count == 0) return;
             userItinary.Remove(userItinary[0]);
             List<JCDStation> stationsOfContract = jcdecauxTool.getStations(userDestinationStation.contractName);
             if (userItinary[0].onFoot == false && needUpdate(stationsOfContract)) {
                 updateItinary(stationsOfContract);
-
             }
             addItinaryToTheQueue();
         }
