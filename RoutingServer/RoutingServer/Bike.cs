@@ -15,6 +15,7 @@ using RoutingServer.ServiceReference1;
 namespace RoutingServer
 {
     // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom de classe "Service1" à la fois dans le code et le fichier de configuration.
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class Bike : IBikeService
     {
 
@@ -29,17 +30,15 @@ namespace RoutingServer
 
         public List<Itinary> GetItinerary(string origin, string destination, string cityName)
         {
-            userItinary =  calculateItinerary(origin, destination, cityName);
-            return userItinary;
+            return  calculateItinerary(origin, destination, cityName);
         }
 
-        public DataContainer GetDataContainer(String origin, String destination, string cityName)
+        public ActiveMqResponse GetDataContainer(String origin, String destination, string cityName)
         {
-            DataContainer data = new DataContainer();
+            ActiveMqResponse data = new ActiveMqResponse();
             try
             {
-                List<Itinary> itinary = GetItinerary(origin, destination, cityName);
-                data.itinary = itinary;
+                data.itinary = GetItinerary(origin, destination, cityName)[0];
             }
             catch (Exception e)
             {
@@ -49,7 +48,7 @@ namespace RoutingServer
         }
         public void PutDataContainerInQueue(String origin, String destination, string cityName)
         {
-            DataContainer data = GetDataContainer(origin, destination, cityName);
+            ActiveMqResponse data = GetDataContainer(origin, destination, cityName);
             StringWriter strWriter = new StringWriter();
             JsonSerializer jsonSerializer = new JsonSerializer();
             jsonSerializer.Serialize(strWriter, data);
@@ -76,8 +75,8 @@ namespace RoutingServer
             userDestinationStation = destinationStation;
             userDestinationGeoLoca = destinationGeoLoca;
 
-
-            return CreateItinary(originGeoLoca, originStation, destinationStation, destinationGeoLoca);
+            userItinary = CreateItinary(originGeoLoca, originStation, destinationStation, destinationGeoLoca);
+            return userItinary;
         }
 
         public List<Itinary> CreateItinary(GeoLoca originGeoLoca, JCDStation originStation, JCDStation destinationStation, GeoLoca destinationGeoLoca)
@@ -99,12 +98,14 @@ namespace RoutingServer
         public void update() {
             userItinary.Remove(userItinary[0]);
             List<JCDStation> stationsOfContract = jcdecauxTool.getStations(userDestinationStation.contractName);
-            if (userItinary[0].onFoot == false && needUpdate(stationsOfContract))
+            if (userItinary[0].onFoot == false && needUpdate(stationsOfContract)) {
                 updateItinary(stationsOfContract);
+
+            }
             addItinaryToTheQueue();
         }
 
-       
+
         private bool needUpdate(List<JCDStation> stationsOfContract)
         {
             JCDStation endStation = jcdecauxTool.getStationUsingStation(userDestinationStation, stationsOfContract);
@@ -123,11 +124,11 @@ namespace RoutingServer
 
         private void addItinaryToTheQueue()
         {
-            //TODO FAIRE EN SORTE QUE DataContainer NE CONTIENNE QU'UN SEUL ITINARY
-            DataContainer data = new DataContainer();
+            //TODO FAIRE EN SORTE QUE ActiveMqResponse NE CONTIENNE QU'UN SEUL ITINARY
+            ActiveMqResponse data = new ActiveMqResponse();
             StringWriter strWriter = new StringWriter();
             JsonSerializer jsonSerializer = new JsonSerializer();
-            data.itinary = userItinary;
+            data.itinary = userItinary[0];
             jsonSerializer.Serialize(strWriter, data);
             producer.sendMessage(strWriter.ToString());
         }
