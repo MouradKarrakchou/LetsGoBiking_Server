@@ -13,11 +13,11 @@ namespace RoutingServer
     public interface IBikeService
     {
         [OperationContract]
-        List<Itinary> GetItinerary(String origin, String destination);
+        List<Itinary> GetItinerary(String origin, String destination, string cityName);
         [OperationContract]
-        DataContainer GetDataContainer(String origin, String destination);
+        DataContainer GetDataContainer(String origin, String destination, string cityName);
         [OperationContract]
-        void PutDataContainerInQueue(String origin, String destination);
+        void PutDataContainerInQueue(String origin, String destination, string cityName);
 
     }
 

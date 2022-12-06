@@ -27,18 +27,18 @@ namespace RoutingServer
         JCDStation userOriginStation;      
         GeoLoca userDestinationGeoLoca;
 
-        public List<Itinary> GetItinerary(string origin, string destination)
+        public List<Itinary> GetItinerary(string origin, string destination, string cityName)
         {
-            userItinary =  calculateItinerary(origin, destination);
+            userItinary =  calculateItinerary(origin, destination, cityName);
             return userItinary;
         }
 
-        public DataContainer GetDataContainer(String origin, String destination)
+        public DataContainer GetDataContainer(String origin, String destination, string cityName)
         {
             DataContainer data = new DataContainer();
             try
             {
-                List<Itinary> itinary = GetItinerary(origin, destination);
+                List<Itinary> itinary = GetItinerary(origin, destination, cityName);
                 data.itinary = itinary;
             }
             catch (Exception e)
@@ -47,20 +47,23 @@ namespace RoutingServer
             }
             return data;
         }
-        public void PutDataContainerInQueue(String origin, String destination)
+        public void PutDataContainerInQueue(String origin, String destination, string cityName)
         {
-            DataContainer data = GetDataContainer(origin, destination);
+            DataContainer data = GetDataContainer(origin, destination, cityName);
             StringWriter strWriter = new StringWriter();
             JsonSerializer jsonSerializer = new JsonSerializer();
             jsonSerializer.Serialize(strWriter, data);
             producer.sendMessage(strWriter.ToString());
         }
 
-        private List<Itinary> calculateItinerary(String origin, String destination)
+        private List<Itinary> calculateItinerary(String origin, String destination, string cityName)
         {
             GeoLoca originGeoLoca = openStreetMapTool.GetPositionWithAdress(origin);
             GeoLoca destinationGeoLoca = openStreetMapTool.GetPositionWithAdress(destination);
-                       
+
+            if (cityName == "") cityName = originGeoLoca.getCity();
+
+
             List<JCDStation> stationsOfContract = jcdecauxTool.getStationsUsingCity(originGeoLoca.getCity());
 
             JCDStation originStation = GetNearestStation(originGeoLoca, stationsOfContract, true, false);
@@ -129,6 +132,6 @@ namespace RoutingServer
             producer.sendMessage(strWriter.ToString());
         }
 
-
+        
     }
 }
