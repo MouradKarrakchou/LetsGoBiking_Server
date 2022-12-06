@@ -15,7 +15,7 @@ namespace RoutingServer
         [OperationContract]
         List<Itinary> GetItinerary(String origin, String destination, string cityName);
         [OperationContract]
-        void PutDataContainerInQueue(String origin, String destination, string cityName);
+        void PutDataContainerInQueue(String origin, String destination, string cityName, string username);
         [OperationContract]
         void update();
 

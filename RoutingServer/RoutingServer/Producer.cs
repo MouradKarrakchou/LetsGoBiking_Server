@@ -28,8 +28,11 @@ namespace RoutingServer
 
             // Create a single Connection from the Connection Factory.
             connection = connectionFactory.CreateConnection();
-            session = connection.CreateSession();
-            destination = session.GetQueue("test");
+            session = connection.CreateSession();           
+        }
+
+        public void setupProducer(string nameQueue) {
+            destination = session.GetQueue(nameQueue);
 
             // Create a Producer targetting the selected queue.
             producer = session.CreateProducer(destination);

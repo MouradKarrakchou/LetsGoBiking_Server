@@ -46,12 +46,13 @@ namespace RoutingServer
             }
             return data;
         }
-        public void PutDataContainerInQueue(String origin, String destination, string cityName)
+        public void PutDataContainerInQueue(String origin, String destination, string cityName, string username)
         {
             ActiveMqResponse data = GetDataContainer(origin, destination, cityName);
             StringWriter strWriter = new StringWriter();
             JsonSerializer jsonSerializer = new JsonSerializer();
             jsonSerializer.Serialize(strWriter, data);
+            producer.setupProducer(username);
             producer.sendMessage(strWriter.ToString());
         }
 
