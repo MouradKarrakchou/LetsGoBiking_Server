@@ -28,11 +28,25 @@ namespace RoutingServer
         JCDStation userOriginStation;      
         GeoLoca userDestinationGeoLoca;
 
+        /// <summary>
+        /// Return the 3 itinary of that compose the whole route of the user, origin -> firstBikeStation -> secondBikeStation -> destination
+        /// </summary>
+        /// <param name="origin"></param>
+        /// <param name="destination"></param>
+        /// <param name="cityName"></param>
+        /// <returns> Return the 3 itinary,{[origin -> firstBikeStation],[firstBikeStation-> secondBikeStation],[secondBikeStation -> destination]}</returns>
         public List<Itinary> GetItinerary(string origin, string destination, string cityName)
         {
             return  calculateItinerary(origin, destination, cityName);
         }
 
+        /// <summary>
+        /// return a dataContainer that contain the current part of the global itinary and a string texte of an exception
+        /// </summary>
+        /// <param name="origin"></param>
+        /// <param name="destination"></param>
+        /// <param name="cityName"></param>
+        /// <returns>a DataContainer with the current part of the itinary</returns>
         public ActiveMqResponse GetDataContainer(String origin, String destination, string cityName)
         {
             ActiveMqResponse data = new ActiveMqResponse();
@@ -46,6 +60,13 @@ namespace RoutingServer
             }
             return data;
         }
+        /// <summary>
+        /// Put the DataContainer inside activemq queue of the user
+        /// </summary>
+        /// <param name="origin"></param>
+        /// <param name="destination"></param>
+        /// <param name="cityName"></param>
+        /// <param name="username"></param>
         public void PutDataContainerInQueue(String origin, String destination, string cityName, string username)
         {
             ActiveMqResponse data = GetDataContainer(origin, destination, cityName);
@@ -55,7 +76,16 @@ namespace RoutingServer
             producer.setupProducer(username);
             producer.sendMessage(strWriter.ToString());
         }
-
+        /// <summary>
+        /// Return the entire itinary using origin and destination.
+        /// If the parameter cityName is define the itinary will be based on this cityname
+        /// If it is define to "" the programme 
+        /// </summary>
+        /// <param name="origin"></param>
+        /// <param name="destination"></param>
+        /// <param name="cityName"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         private List<Itinary> calculateItinerary(String origin, String destination, string cityName)
         {
             GeoLoca originGeoLoca = openStreetMapTool.GetPositionWithAdress(origin);
