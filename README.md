@@ -1,5 +1,5 @@
 # Bike
-Github associé: 
+Github associés: 
 
 https://github.com/MouradKarrakchou/LetsGoBiking_Client
 
