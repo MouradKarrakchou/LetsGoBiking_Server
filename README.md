@@ -1,7 +1,10 @@
 # Bike
 Github associé: 
-https://github.com/MouradKarrakchou/LetsGoBiking_Client \n
-https://github.com/MouradKarrakchou/LetsGoBiking_Proxy \n
+
+https://github.com/MouradKarrakchou/LetsGoBiking_Client
+
+https://github.com/MouradKarrakchou/LetsGoBiking_Proxy
+
 # Let's go biking
  Mourad Karrakchou ; Léo Le Bihan
 # Contexte
